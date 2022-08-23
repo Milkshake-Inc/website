@@ -12,7 +12,6 @@ const app = new Application({
 
 var graphic = new Graphics();
 
-graphic.position.y = 700;
 graphic.moveTo(0, 0);
 graphic.lineStyle({
   width: 1,
@@ -20,10 +19,8 @@ graphic.lineStyle({
 })
 
 const height = 2000;
-
 const horizontalCount = 1000;
 const horizontalSegment = window.innerWidth / horizontalCount;
-
 
 app.stage.addChild(graphic);
 
@@ -34,12 +31,27 @@ app.view.style.zIndex = "-1";
 
 let time = 0;
 
-app.ticker.add((deltaTime) => {
+const lerp = (start: number, end: number, percent: number): number => {
+  return start + (end - start) * percent;
+}
 
-  time += deltaTime;
-  graphic.clear();
-  drawMilk(graphic, 0xfdeedf, 0.5, 0, -30);
-  drawMilk(graphic, 0xfdeedf, 1, 1000, 0);
+let started = false;
+
+app.ticker.add((deltaTime) => {
+  if(app.view.height != 0 && started == false) {
+    started = true;
+
+    graphic.position.y = app.view.height + 200;
+  }
+
+  if(started) {
+    graphic.position.y = lerp(graphic.position.y, app.view.height / 2, 0.01);
+
+    time += deltaTime;
+    graphic.clear();
+    drawMilk(graphic, 0xfdeedf, 0.5, 0, -30);
+    drawMilk(graphic, 0xfdeedf, 1, 1000, 0);
+  } 
 });
 
 const drawMilk = (graphic: Graphics, color: number, alpha:number, offset: number, yOffset: number) => {
