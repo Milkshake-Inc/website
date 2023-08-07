@@ -77,5 +77,5 @@ export default function Background() {
         };
 	}, []);
 
-	return <div className='w-full h-full absolute -z-10 overflow-hidden' ref={ref} />;
+	return <div className='w-full h-[95vh] absolute -z-10 overflow-hidden' ref={ref} />;
 }
