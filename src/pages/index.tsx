@@ -24,12 +24,12 @@ export default function Home() {
             width={400}
             height={200}
             priority
-            className="mb-12 mt-16"
+            className="mb-16 mt-16"
             style={{ width: "auto", height: "auto" }}
           />
 
           <section id="work" className="w-full mb-20">
-            <h2 className="text-2xl font-black mb-10 text-gray-900">
+            <h2 className="text-2xl font-black mb-6 text-gray-900">
               <a href="#work" className="hover:underline">Work</a>
             </h2>
             <ul className="space-y-3 list-disc list-inside">
@@ -48,33 +48,38 @@ export default function Home() {
             </ul>
           </section>
 
+          {/* <section id="projects" className="w-full mb-20">
+            <h2 className="text-2xl font-black mb-6 text-gray-900">
+              <a href="#projects" className="hover:underline">Projects</a>
+            </h2>
+            <ul className="space-y-3 list-disc list-inside text-gray-600">
+              <li id="ecs-engine">
+                <Link href="/work/ecs-engine" prefetch={true} className="hover:underline text-gray-900">ECS Engine</Link>
+              </li>
+              <li id="typescript-wow-server">
+                <Link href="/work/typescript-wow-server" prefetch={true} className="hover:underline text-gray-900">Typescript WoW Server</Link>
+              </li>
+              <li id="teaching-llm-to-fish">
+                <Link href="/work/teaching-llm-to-fish" prefetch={true} className="hover:underline text-gray-900">Teaching an LLM to Fish</Link>
+              </li>
+              <li id="typescript-wow-bot">
+                <Link href="/work/typescript-wow-bot" prefetch={true} className="hover:underline text-gray-900">Typescript WoW Bot</Link>
+              </li>
+            </ul>
+          </section> */}
+
           <section id="blog" className="w-full mb-20">
-            <h2 className="text-2xl font-black mb-10 text-gray-900">
+            <h2 className="text-2xl font-black mb-6 text-gray-900">
               <a href="#blog" className="hover:underline">Blog</a>
             </h2>
-            <ul className="space-y-3 list-disc list-inside">
-              <li id="lightmapping-threejs" className="flex items-center">
-                <span className={`mr-3 px-2 py-1 text-xs font-normal rounded text-black w-12 text-center ${
-                  lightmappingMetadata.type === "gfx" ? "bg-purple-200" : "bg-blue-200"
-                }`}>
-                  {lightmappingMetadata.type === "gfx" ? "GFX" : "INFR"}
-                </span>
+            <ul className="space-y-3 list-disc list-inside text-gray-600">
+              <li id="lightmapping-threejs">
                 <Link href="/blog/lightmapping-threejs" prefetch={true} className="hover:underline text-gray-900">{lightmappingMetadata.title}</Link>
               </li>
-              <li id="pre-depthpass-transparency" className="flex items-center">
-                <span className={`mr-3 px-2 py-1 text-xs font-normal rounded text-black w-12 text-center ${
-                  preDepthPassMetadata.type === "gfx" ? "bg-purple-200" : "bg-blue-200"
-                }`}>
-                  {preDepthPassMetadata.type === "gfx" ? "GFX" : "INFR"}
-                </span>
+              <li id="pre-depthpass-transparency">
                 <Link href="/blog/pre-depthpass-transparency" prefetch={true} className="hover:underline text-gray-900">{preDepthPassMetadata.title}</Link>
               </li>
-              <li id="weapon-shader" className="flex items-center">
-                <span className={`mr-3 px-2 py-1 text-xs font-normal rounded text-black w-12 text-center ${
-                  weaponShadersMetadata.type === "gfx" ? "bg-purple-200" : "bg-blue-200"
-                }`}>
-                  {weaponShadersMetadata.type === "gfx" ? "GFX" : "INFR"}
-                </span>
+              <li id="weapon-shader">
                 <Link href="/blog/weapon-shader" prefetch={true} className="hover:underline text-gray-900">{weaponShadersMetadata.title}</Link>
               </li>
             </ul>
