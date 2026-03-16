@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  image: string;
+  status: 'live' | 'wip';
+  description: string;
+}
+
+const { title, slug, image, status, description } = Astro.props;
+---
+<a href={`/work/${slug}`} class="group block bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-400 transition-colors">
+  <div class="aspect-video overflow-hidden bg-gray-100">
+    <img src={image} alt={title} class="w-full h-full object-cover" />
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class={`px-2 py-0.5 text-xs font-normal rounded text-black ${status === 'live' ? 'bg-green-200' : 'bg-gray-200'}`}>
+        {status === 'live' ? 'LIVE' : 'WIP'}
+      </span>
+      <h3 class="font-bold text-gray-900 group-hover:underline">{title}</h3>
+    </div>
+    <p class="text-sm text-gray-600">{description}</p>
+  </div>
+</a>

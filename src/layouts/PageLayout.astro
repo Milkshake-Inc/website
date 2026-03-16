@@ -1,0 +1,26 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { title, backHref, backLabel } = Astro.props;
+---
+<BaseLayout title={`${title} — milkshake.io`}>
+  <Header />
+  <main class="flex-1 px-6 py-12">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl font-black text-gray-900 mb-8">{title}</h1>
+      <slot />
+      <div class="mt-12">
+        <a href={backHref} class="text-gray-600 hover:underline">{backLabel}</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

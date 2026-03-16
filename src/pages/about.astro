@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="About — milkshake.io">
+  <Header />
+  <main class="flex-1 px-6 py-16">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-4xl font-black text-gray-900 mb-4">About</h1>
+      <p class="text-gray-600 mb-16 max-w-xl">
+        We're a two-person indie studio making multiplayer games and pushing the boundaries of browser-based graphics.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+
+        <div class="flex flex-col items-center text-center">
+          <div class="w-64 h-64 rounded-2xl overflow-hidden mb-6 bg-stone-100">
+            <img src="/icons/lucas.svg" alt="Lucas" class="w-full h-full object-cover" />
+          </div>
+          <h2 class="text-2xl font-black text-gray-900 mb-1">Lucas</h2>
+          <p class="text-sm text-gray-500 mb-3">Co-founder</p>
+          <p class="text-gray-600 text-sm leading-relaxed max-w-xs">
+            Game developer and creative director. Focused on game feel, art direction, and building experiences people actually want to play.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center text-center">
+          <div class="w-64 h-64 rounded-2xl overflow-hidden mb-6 bg-stone-100">
+            <img src="/icons/andrew.svg" alt="Andrew" class="w-full h-full object-cover" />
+          </div>
+          <h2 class="text-2xl font-black text-gray-900 mb-1">Andrew</h2>
+          <p class="text-sm text-gray-500 mb-3">Co-founder</p>
+          <p class="text-gray-600 text-sm leading-relaxed max-w-xs">
+            Game developer and graphics programmer. Obsessed with multiplayer systems, shader effects, and making things run fast in the browser.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
