@@ -112,7 +112,10 @@ export function HomeContent() {
   return (
     <>
       <section className="px-8 pb-10 pt-12 text-center">
-        <h1 className="text-halo mx-auto max-w-3xl text-7xl" style={{ letterSpacing: "-0.02em" }}>
+        <h1
+          className="fade-up text-halo mx-auto max-w-3xl text-7xl"
+          style={{ letterSpacing: "-0.02em", ["--delay" as string]: "100ms" } as React.CSSProperties}
+        >
           We make <CyclingWord items={cycleWords} /> games
         </h1>
         <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
@@ -159,15 +162,22 @@ export function HomeContent() {
       </section>
 
       <section id="about" className="mx-auto max-w-2xl scroll-mt-20 px-8 pb-20 pt-2 text-center">
-        <p className="text-base leading-relaxed text-[#1f1f1f] md:text-lg">
+        <p
+          className="fade-up text-base leading-relaxed text-[#1f1f1f] md:text-lg"
+          style={{ ["--delay" as string]: "400ms" } as React.CSSProperties}
+        >
           A two-person studio making fun, friendly games for the web. We design and ship everything ourselves.
         </p>
       </section>
 
       <section id="games" className="mx-auto grid max-w-6xl scroll-mt-20 grid-cols-1 gap-6 px-8 pb-16 md:grid-cols-2">
         {games.map((g, i) => (
-          <Link
+          <div
             key={g.title}
+            className="card-pop"
+            style={{ ["--delay" as string]: `${500 + i * 100}ms` } as React.CSSProperties}
+          >
+          <Link
             href={g.href}
             scroll={false}
             className="tilt-tile block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
@@ -193,6 +203,7 @@ export function HomeContent() {
               </div>
             </div>
           </Link>
+          </div>
         ))}
       </section>
 
@@ -206,11 +217,20 @@ export function HomeContent() {
       </div>
 
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
-        <h2 className="mb-10 text-center text-5xl">Latest posts</h2>
+        <h2
+          className="fade-up mb-10 text-center text-5xl"
+          style={{ ["--delay" as string]: "800ms" } as React.CSSProperties}
+        >
+          Latest posts
+        </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, i) => (
-            <Link
+            <div
               key={post.title}
+              className="card-pop"
+              style={{ ["--delay" as string]: `${900 + i * 100}ms` } as React.CSSProperties}
+            >
+            <Link
               href={post.href}
               scroll={false}
               className="tilt-tile block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] bg-white shadow-[0_6px_0_#1f1f1f]"
@@ -238,6 +258,7 @@ export function HomeContent() {
                 <p className="mt-2 text-sm leading-relaxed text-[#555]">{post.description}</p>
               </div>
             </Link>
+            </div>
           ))}
         </div>
       </section>

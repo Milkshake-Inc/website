@@ -38,7 +38,7 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
 
 export function SiteNav() {
   return (
-    <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 md:px-8">
+    <nav className="fade-down mx-auto flex max-w-6xl items-center justify-between px-4 py-6 md:px-8">
       <Link href="/">
         <Image src="/icons/milkshakelogo.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
       </Link>
@@ -60,19 +60,23 @@ export function SiteNav() {
 export function SiteFooter() {
   return (
     <div className="relative mt-2 md:mt-12">
-      <svg viewBox="0 0 1280 120" preserveAspectRatio="none" className="hidden h-24 w-full md:block" aria-hidden>
-        <path
-          d="M0,80 C100,10 220,130 340,70 C460,10 580,130 700,70 C820,10 940,130 1060,70 C1180,20 1240,110 1280,80 L1280,120 L0,120 Z"
-          fill="#ffffff"
-        />
-      </svg>
-      <svg viewBox="0 0 600 120" preserveAspectRatio="none" className="block h-16 w-full md:hidden" aria-hidden>
-        <path
-          d="M0,80 C150,10 300,130 600,70 L600,120 L0,120 Z"
-          fill="#ffffff"
-        />
-      </svg>
-      <footer className="bg-white px-8 pb-12 pt-4">
+      <div className="relative hidden h-24 w-full overflow-hidden md:block">
+        <svg viewBox="0 0 2560 120" preserveAspectRatio="none" className="wave-loop absolute left-0 top-0 h-full" aria-hidden>
+          <path
+            d="M0,70 C53,45 107,45 160,70 C213,95 267,95 320,70 C373,45 427,45 480,70 C533,95 587,95 640,70 C693,45 747,45 800,70 C853,95 907,95 960,70 C1013,45 1067,45 1120,70 C1173,95 1227,95 1280,70 C1333,45 1387,45 1440,70 C1493,95 1547,95 1600,70 C1653,45 1707,45 1760,70 C1813,95 1867,95 1920,70 C1973,45 2027,45 2080,70 C2133,95 2187,95 2240,70 C2293,45 2347,45 2400,70 C2453,95 2507,95 2560,70 L2560,120 L0,120 Z"
+            fill="#ffffff"
+          />
+        </svg>
+      </div>
+      <div className="relative block h-16 w-full overflow-hidden md:hidden">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="wave-loop absolute left-0 top-0 h-full" aria-hidden>
+          <path
+            d="M0,70 C100,45 200,45 300,70 C400,95 500,95 600,70 C700,45 800,45 900,70 C1000,95 1100,95 1200,70 L1200,120 L0,120 Z"
+            fill="#ffffff"
+          />
+        </svg>
+      </div>
+      <footer className="bg-white px-8 pb-12 pt-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
           <Link href="/">
             <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />

@@ -18,7 +18,7 @@ export default function WeaponShadersPost() {
             loop
             muted
             className="w-full"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", aspectRatio: "722 / 720" }}
           >
             Your browser does not support the video tag.
           </video>
@@ -39,8 +39,8 @@ export default function WeaponShadersPost() {
           <Image
             src="/blog/weapon/1.webp"
             alt="Step 1: Render Weapon with Stencil"
-            width={800}
-            height={400}
+            width={1260}
+            height={1105}
             className="w-full"
           />
         </div>
@@ -59,8 +59,8 @@ export default function WeaponShadersPost() {
           <Image
             src="/blog/weapon/2.webp"
             alt="Step 2: Render Outline Model"
-            width={800}
-            height={400}
+            width={1278}
+            height={1082}
             className="w-full"
           />
         </div>
@@ -82,8 +82,8 @@ export default function WeaponShadersPost() {
           <Image
             src="/blog/weapon/3.webp"
             alt="Step 3: Stencil Buffer Magic"
-            width={800}
-            height={400}
+            width={1240}
+            height={1038}
             className="w-full"
           />
         </div>
@@ -98,8 +98,8 @@ export default function WeaponShadersPost() {
           <Image
             src="/blog/weapon/4.webp"
             alt="Step 4: Glow Sprite"
-            width={800}
-            height={400}
+            width={1552}
+            height={1357}
             className="w-full"
           />
         </div>
@@ -118,7 +118,7 @@ export default function WeaponShadersPost() {
             loop
             muted
             className="w-full"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", aspectRatio: "760 / 720" }}
           >
             Your browser does not support the video tag.
           </video>

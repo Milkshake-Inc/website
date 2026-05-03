@@ -14,8 +14,8 @@ export default function LightmappingPost() {
           <Image
             src="/blog/lightmaps/lightmap5.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1894}
+            height={1197}
             className="w-full"
           />
         </div>
@@ -41,15 +41,15 @@ export default function LightmappingPost() {
           <Image
             src="/blog/lightmaps/lightmap6.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1692}
+            height={872}
             className="w-full"
           />
           <Image
             src="/blog/lightmaps/lightmap_combo.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1266}
+            height={473}
             className="w-full"
           />
         </div>
@@ -71,8 +71,8 @@ export default function LightmappingPost() {
           <Image
             src="/blog/lightmaps/lightmap_pixels.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1350}
+            height={1174}
             className="w-full"
           />
         </div>
@@ -95,15 +95,15 @@ export default function LightmappingPost() {
           <Image
             src="/blog/lightmaps/lightmap7.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1842}
+            height={1069}
             className="w-full"
           />
           <Image
             src="/blog/lightmaps/lightmap8.webp"
             alt="alt text"
-            width={800}
-            height={400}
+            width={1805}
+            height={1089}
             className="w-full"
           />
         </div>

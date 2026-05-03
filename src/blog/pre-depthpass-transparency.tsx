@@ -15,8 +15,8 @@ export default function PreDepthPassPost() {
           <Image
             src="/blog/wow/1.webp"
             alt="World of Warcraft transparency example"
-            width={800}
-            height={400}
+            width={1568}
+            height={753}
             className="w-full"
           />
         </div>
@@ -35,8 +35,8 @@ export default function PreDepthPassPost() {
           <Image
             src="/blog/wow/2.webp"
             alt="RenderDoc debugging setup"
-            width={800}
-            height={400}
+            width={3772}
+            height={1731}
             className="w-full"
           />
         </div>
@@ -58,7 +58,7 @@ export default function PreDepthPassPost() {
             loop
             muted
             className="w-full"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", aspectRatio: "1028 / 720" }}
           >
             Your browser does not support the video tag.
           </video>
@@ -82,7 +82,7 @@ export default function PreDepthPassPost() {
             loop
             muted
             className="w-full"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", aspectRatio: "830 / 720" }}
           >
             Your browser does not support the video tag.
           </video>
@@ -137,7 +137,7 @@ export default function PreDepthPassPost() {
             loop
             muted
             className="w-full"
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", aspectRatio: "826 / 720" }}
           >
             Your browser does not support the video tag.
           </video>
