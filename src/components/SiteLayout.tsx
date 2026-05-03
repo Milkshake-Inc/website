@@ -34,6 +34,7 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
     rot: rand() * 360,
     parallax: 0.25 + rand() * 0.4,
     spin: (rand() - 0.5) * 0.06,
+    fallTilt: (rand() - 0.5) * 60,
     color: sprinkleColors[i % sprinkleColors.length],
   }));
 }
@@ -144,7 +145,7 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
               left: s.left,
               background: s.color,
               borderRadius: 999,
-              transform: `translate3d(0, calc(var(--scroll-n, 0) * ${s.parallax} * 1px + var(--fall, 0px)), 0) rotate(calc(${s.rot}deg + var(--scroll-n, 0) * ${s.spin} * 1deg))`,
+              transform: `translate3d(0, calc(var(--scroll-n, 0) * ${s.parallax} * 1px + var(--fall, 0px)), 0) rotate(calc(${s.rot}deg + var(--scroll-n, 0) * ${s.spin} * 1deg + ${s.fallTilt}deg * var(--fall-progress, 0)))`,
               ["--delay" as string]: `${i * 10}ms`,
             } as React.CSSProperties}
           />

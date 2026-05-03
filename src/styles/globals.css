@@ -30,7 +30,7 @@ img {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #ffc7a0 #fff8ee;
+  scrollbar-color: #c9a9ff #fff8ee;
 }
 
 ::-webkit-scrollbar {
@@ -41,12 +41,12 @@ html {
   background: #fff8ee;
 }
 ::-webkit-scrollbar-thumb {
-  background: #ffc7a0;
+  background: #c9a9ff;
   border: 3px solid #fff8ee;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff9aac;
+  background: #25d6ba;
 }
 ::-webkit-scrollbar-corner {
   background: #fff8ee;
@@ -320,6 +320,11 @@ h3 {
   initial-value: -40px;
   inherits: false;
 }
+@property --fall-progress {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
 
 .sprinkle-fade {
   animation: sprinkle-fall-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -327,8 +332,8 @@ h3 {
 }
 
 @keyframes sprinkle-fall-in {
-  from { opacity: 0; --fall: -40px; }
-  to   { opacity: 1; --fall: 0px; }
+  from { opacity: 0; --fall: -40px; --fall-progress: 1; }
+  to   { opacity: 1; --fall: 0px;   --fall-progress: 0; }
 }
 
 .blog-card {
