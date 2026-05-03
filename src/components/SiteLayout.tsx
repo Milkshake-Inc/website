@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const sprinkleColors = ["#ff9aac", "#ffe14b", "#9ee5d3", "#a9d8ff", "#c9a9ff", "#ffc7a0", "#25d6ba"];
 
@@ -111,15 +111,14 @@ type SiteLayoutProps = {
 
 export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: SiteLayoutProps) {
   const sprinkles = generateSprinkles(seed, count, yRange);
-  const layerRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [footerHeight, setFooterHeight] = useState(280);
 
   useEffect(() => {
     let raf = 0;
     const update = () => {
       raf = 0;
-      if (layerRef.current) {
-        layerRef.current.style.setProperty("--scroll-n", `${window.scrollY}`);
-      }
+      document.documentElement.style.setProperty("--scroll-n", `${window.scrollY}`);
     };
     const onScroll = () => {
       if (raf) return;
@@ -133,9 +132,18 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
     };
   }, []);
 
+  useEffect(() => {
+    if (!footerRef.current) return;
+    const ro = new ResizeObserver((entries) => {
+      for (const e of entries) setFooterHeight(e.contentRect.height);
+    });
+    ro.observe(footerRef.current);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#fff8ee] text-[#1f1f1f]">
-      <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#fff8ee] text-[#1f1f1f]">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         {sprinkles.map((s, i) => (
           <span
             key={i}
@@ -151,9 +159,12 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
           />
         ))}
       </div>
-      <div className="relative z-10">
+      <div className="relative z-10 bg-[#fff8ee]">
         <SiteNav />
         {children}
+      </div>
+      <div aria-hidden style={{ height: footerHeight }} />
+      <div ref={footerRef} className="fixed bottom-0 left-0 right-0 z-0">
         <SiteFooter />
       </div>
     </div>
