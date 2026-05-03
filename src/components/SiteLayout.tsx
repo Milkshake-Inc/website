@@ -39,7 +39,7 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
 export function SiteNav() {
   return (
     <nav className="fade-down mx-auto flex max-w-6xl items-center justify-between px-4 py-6 md:px-8">
-      <Link href="/">
+      <Link href="/" className="logo-hover">
         <Image src="/icons/milkshakelogo.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
       </Link>
       <div className="flex gap-4 md:gap-7">
@@ -49,6 +49,9 @@ export function SiteNav() {
         <Link href="/#blog" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
           blog
         </Link>
+        <a href="mailto:hello@milkshake.io" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
+          contact
+        </a>
       </div>
     </nav>
   );

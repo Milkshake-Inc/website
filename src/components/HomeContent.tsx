@@ -137,6 +137,28 @@ function GameCardMedia({ image, video, fit }: { image: string; video?: string; f
   );
 }
 
+function XMark() {
+  const [pulsing, setPulsing] = useState(false);
+  return (
+    <span className="x-pop -mt-3 inline-block sm:-mt-0 md:-mt-6" aria-hidden>
+      <span
+        className={`x-hover select-none py-16 text-5xl font-black leading-none text-[#1f1f1f] sm:py-20 sm:text-6xl md:py-28 md:text-8xl${pulsing ? " is-pulsing" : ""}`}
+        style={{
+          WebkitTextStroke: "2px #1f1f1f",
+          textShadow:
+            "-4px 0 #fff, 4px 0 #fff, 0 -4px #fff, 0 4px #fff, -3px -3px #fff, 3px -3px #fff, -3px 3px #fff, 3px 3px #fff",
+        }}
+        onMouseEnter={() => {
+          if (!pulsing) setPulsing(true);
+        }}
+        onAnimationEnd={() => setPulsing(false)}
+      >
+        ×
+      </span>
+    </span>
+  );
+}
+
 function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; color: string }[]; intervalMs?: number }) {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -170,40 +192,36 @@ function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; colo
 export function HomeContent() {
   return (
     <>
-      <section className="px-8 pb-2 pt-12 text-center">
+      <section className="px-4 pb-4 pt-8 text-center md:px-8 md:pb-2 md:pt-12">
         <h1
-          className="fade-up text-halo mx-auto max-w-3xl text-7xl"
+          className="fade-up mx-auto max-w-3xl select-none text-5xl md:text-7xl"
           style={{ letterSpacing: "-0.02em", ["--delay" as string]: "100ms" } as React.CSSProperties}
         >
           We make <CyclingWord items={cycleWords} /> games
         </h1>
-        <div className="mt-10 flex items-center justify-center gap-2 md:gap-4">
-          <div className="flex flex-col items-center gap-0">
-            <span className="face-hover">
+        <div className="mt-6 flex items-center justify-center gap-1 md:mt-10 md:gap-4">
+          <div className="group relative flex flex-col items-center gap-0">
+            <span className="face-hover" style={{ ["--hover-rot" as string]: "-6deg" } as React.CSSProperties}>
               <Image
                 src="/images/faces/lucas.webp"
                 alt="Lucas"
                 width={220}
                 height={220}
                 priority
-                className="face-bounce h-52 w-52 object-contain md:h-64 md:w-64"
+                className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
                 style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "120ms" } as React.CSSProperties}
               />
             </span>
+            <span
+              className="speech face-name pointer-events-none absolute left-1/2 top-0 z-10 select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:text-base"
+              style={{ background: "#ff9aac", transform: "translate(-50%, calc(-100% + 18px)) rotate(-4deg)", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+            >
+              Lucas
+            </span>
           </div>
-          <span
-            className="x-pop -mt-6 select-none text-7xl font-black leading-none text-[#1f1f1f] md:text-8xl"
-            style={{
-              WebkitTextStroke: "2px #1f1f1f",
-              textShadow:
-                "-4px 0 #fff, 4px 0 #fff, 0 -4px #fff, 0 4px #fff, -3px -3px #fff, 3px -3px #fff, -3px 3px #fff, 3px 3px #fff",
-            }}
-            aria-hidden
-          >
-            ×
-          </span>
-          <div className="flex flex-col items-center gap-0">
-            <span className="face-hover">
+          <XMark />
+          <div className="group relative flex flex-col items-center gap-0">
+            <span className="face-hover" style={{ ["--hover-rot" as string]: "6deg" } as React.CSSProperties}>
               <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
                 <Image
                   src="/images/faces/andrew.webp"
@@ -211,23 +229,29 @@ export function HomeContent() {
                   width={220}
                   height={220}
                   priority
-                  className="face-bounce h-52 w-52 object-contain md:h-64 md:w-64"
+                  className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
                   style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "260ms" } as React.CSSProperties}
                 />
               </span>
+            </span>
+            <span
+              className="speech face-name pointer-events-none absolute left-1/2 top-0 z-10 select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:text-base"
+              style={{ background: "#c9a9ff", transform: "translate(-50%, calc(-100% + 18px)) rotate(4deg)", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+            >
+              Andrew
             </span>
           </div>
         </div>
       </section>
 
-      <section id="about" className="scroll-mt-20 px-4 pb-32 pt-0 text-center">
+      <section id="about" className="scroll-mt-20 px-4 pb-20 pt-2 text-center md:pb-32 md:pt-0">
         <span
           className="fade-up inline-block"
           style={{ ["--delay" as string]: "400ms" } as React.CSSProperties}
         >
           <p
-            className="text-halo whitespace-nowrap text-base font-bold leading-tight text-[#1f1f1f] md:text-2xl"
-            style={{ transform: "rotate(-1deg)" }}
+            className="select-none inline-block px-4 py-2 text-base font-bold leading-tight text-white md:text-2xl"
+            style={{ transform: "rotate(-1deg)", background: "#25d6ba" }}
           >
             A two-person studio making fun, friendly games for the web.
           </p>
@@ -280,7 +304,7 @@ export function HomeContent() {
 
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
         <h2
-          className="fade-up text-halo mb-10 text-center text-5xl"
+          className="fade-up mb-10 text-center text-5xl"
           style={{ ["--delay" as string]: "800ms" } as React.CSSProperties}
         >
           Blog
