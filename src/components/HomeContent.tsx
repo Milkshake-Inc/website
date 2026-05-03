@@ -57,6 +57,7 @@ const games: Game[] = [
   {
     title: "Rankle",
     image: "/images/work/rankle_nologo.webp",
+    video: "/images/work/rankle.mp4",
     logo: "/images/logos/rankle.webp",
     tag: "Daily · Web",
     desc: "Rank the answers — only your top 5 are scored.",

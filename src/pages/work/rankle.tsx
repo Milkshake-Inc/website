@@ -6,6 +6,7 @@ export default function Page() {
       title="Rankle"
       playUrl="https://rankle.mun.sh/"
       image="/images/work/rankle_nologo.webp"
+      video="/images/work/rankle.mp4"
       fit="contain"
       logo="/images/logos/rankle.webp"
       tag="Daily · Web"
