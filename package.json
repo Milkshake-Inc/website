@@ -6,7 +6,8 @@
     "dev": "bun --bun next dev",
     "build": "bun --bun next build",
     "start": "bun --bun next start",
-    "deploy": "bun run build && bunx wrangler pages deploy build --project-name=milk-website --branch=main"
+    "deploy": "bun run build && bunx wrangler pages deploy build --project-name=milk-website --branch=main",
+    "images": "bun scripts/convert-images.ts"
   },
   "dependencies": {
     "next": "16.1.6",

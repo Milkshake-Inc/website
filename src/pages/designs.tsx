@@ -4,8 +4,8 @@ import Head from "next/head";
 const games = [
   {
     title: "GolfParty.io",
-    image: "/images/work/golfparty_nologo.png",
-    logo: "/images/logos/golfparty.png",
+    image: "/images/work/golfparty_nologo.webp",
+    logo: "/images/logos/golfparty.webp",
     tag: "Multiplayer · Web",
     year: "2023",
     desc: "Fast-paced multiplayer golf hosted on Poki.",
@@ -14,8 +14,8 @@ const games = [
   },
   {
     title: "Seedle.io",
-    image: "/images/work/seedle_nologo.png",
-    logo: "/images/logos/seedle.png",
+    image: "/images/work/seedle_nologo.webp",
+    logo: "/images/logos/seedle.webp",
     tag: "Puzzle · Cozy",
     year: "2024",
     desc: "A cozy puzzle where you place tiles to grow crops.",
@@ -24,8 +24,8 @@ const games = [
   },
   {
     title: "Crops And Robbers",
-    image: "/images/work/cropsandrobbers_nologo.png",
-    logo: "/images/logos/cropsandrobbers.png",
+    image: "/images/work/cropsandrobbers_nologo.webp",
+    logo: "/images/logos/cropsandrobbers.webp",
     tag: "Strategy · Multiplayer",
     year: "2022",
     desc: "Farmers vs robbers in a strategic multiplayer battle.",
@@ -34,8 +34,8 @@ const games = [
   },
   {
     title: "Burgaagh!",
-    image: "/images/work/burger_nologo.png",
-    logo: "/images/logos/burger.png",
+    image: "/images/work/burger_nologo.webp",
+    logo: "/images/logos/burger.webp",
     tag: "Casual · Mobile",
     year: "2021",
     desc: "Stack burgers — timing, balance, style.",
@@ -103,7 +103,7 @@ function Design1() {
   return (
     <Frame bg="#fff8ee">
       <nav className="flex items-center justify-between px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
         <div className="flex gap-2">
           {["home", "games", "posts", "about"].map(l => (
             <a key={l} className="rounded-full bg-white px-4 py-1.5 text-sm shadow-[0_3px_0_#1f1f1f] border-2 border-[#1f1f1f]">{l}</a>
@@ -197,7 +197,7 @@ function Design1Sprinkle() {
         </div>
         <div className="relative z-10">
       <nav className="relative z-10 flex items-center justify-between px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
         <div className="flex gap-6">
           {["games", "blog", "about"].map(l => (
             <a key={l} className="text-sm text-[#1f1f1f] hover:text-[#25d6ba]">{l}</a>
@@ -235,7 +235,7 @@ function Design1Sprinkle() {
         </svg>
         <footer className="relative bg-white px-8 pb-10 pt-2">
           <div className="flex flex-col items-center gap-3 text-center">
-            <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+            <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
             <p className="text-base text-[#1f1f1f]">made with <span className="text-[#ff5e9b]">♥</span> by two people, somewhere on the internet.</p>
             <div className="flex gap-5 text-sm">
               <a className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">games</a>
@@ -259,7 +259,7 @@ function Design1Row() {
   return (
     <Frame bg="#fff8ee">
       <nav className="flex items-center justify-between px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
         <div className="flex gap-2">
           {["home", "games", "posts", "about"].map(l => (
             <a key={l} className="rounded-full bg-white px-4 py-1.5 text-sm shadow-[0_3px_0_#1f1f1f] border-2 border-[#1f1f1f]">{l}</a>
@@ -304,7 +304,7 @@ function Design2() {
   return (
     <Frame bg="#ffd6e0">
       <nav className="flex items-center justify-between px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
         <div className="flex gap-2">
           {["home", "games", "posts"].map(l => (
             <a key={l} className="rounded-full border-2 border-[#1f1f1f] bg-white px-4 py-1.5 text-sm shadow-[0_3px_0_#1f1f1f]">{l}</a>
@@ -345,7 +345,7 @@ function Design3() {
   return (
     <Frame bg="#fafafa">
       <nav className="flex items-center justify-between px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 26, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 26, width: "auto" }} />
         <div className="flex items-center gap-2 text-xs text-[#767676]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#25d6ba]" />
           <span>4 games · 3 posts</span>
@@ -385,7 +385,7 @@ function Design4() {
   return (
     <Frame bg="#fff">
       <nav className="flex items-center justify-between border-b border-[#e6e6e6] px-8 py-5">
-        <Image src="/icons/milkshakelogo.png" alt="" width={120} height={32} style={{ height: 26, width: "auto" }} />
+        <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 26, width: "auto" }} />
         <div className="flex items-center gap-2 text-xs text-[#767676]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#25d6ba]" />
           <span>4 games · 3 posts</span>

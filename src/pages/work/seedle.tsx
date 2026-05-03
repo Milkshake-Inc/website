@@ -5,8 +5,8 @@ export default function Page() {
     <WorkPage
 
       title="Seedle.io"
-      image="/images/work/seedle_nologo.png"
-      logo="/images/logos/seedle.png"
+      image="/images/work/seedle_nologo.webp"
+      logo="/images/logos/seedle.webp"
       pastel="#ffe9b3"
       tag="Puzzle · Cozy"
       description="A cozy puzzle game where you place tiles to grow crops, avoid obstacles, and harvest your garden."

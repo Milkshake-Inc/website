@@ -12,7 +12,7 @@ export default function LightmappingPost() {
       <div className="text-gray-600 leading-relaxed">
         <div className="my-6">
           <Image
-            src="/blog/lightmaps/lightmap5.png"
+            src="/blog/lightmaps/lightmap5.webp"
             alt="alt text"
             width={800}
             height={400}
@@ -39,14 +39,14 @@ export default function LightmappingPost() {
 
         <div className="my-6 space-y-4">
           <Image
-            src="/blog/lightmaps/lightmap6.png"
+            src="/blog/lightmaps/lightmap6.webp"
             alt="alt text"
             width={800}
             height={400}
             className="w-full"
           />
           <Image
-            src="/blog/lightmaps/lightmap_combo.png"
+            src="/blog/lightmaps/lightmap_combo.webp"
             alt="alt text"
             width={800}
             height={400}
@@ -69,7 +69,7 @@ export default function LightmappingPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/lightmaps/lightmap_pixels.png"
+            src="/blog/lightmaps/lightmap_pixels.webp"
             alt="alt text"
             width={800}
             height={400}
@@ -93,14 +93,14 @@ export default function LightmappingPost() {
 
         <div className="my-6 space-y-4">
           <Image
-            src="/blog/lightmaps/lightmap7.png"
+            src="/blog/lightmaps/lightmap7.webp"
             alt="alt text"
             width={800}
             height={400}
             className="w-full"
           />
           <Image
-            src="/blog/lightmaps/lightmap8.png"
+            src="/blog/lightmaps/lightmap8.webp"
             alt="alt text"
             width={800}
             height={400}

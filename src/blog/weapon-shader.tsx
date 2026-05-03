@@ -37,7 +37,7 @@ export default function WeaponShadersPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/weapon/1.jpg"
+            src="/blog/weapon/1.webp"
             alt="Step 1: Render Weapon with Stencil"
             width={800}
             height={400}
@@ -57,7 +57,7 @@ export default function WeaponShadersPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/weapon/2.jpg"
+            src="/blog/weapon/2.webp"
             alt="Step 2: Render Outline Model"
             width={800}
             height={400}
@@ -80,7 +80,7 @@ export default function WeaponShadersPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/weapon/3.jpg"
+            src="/blog/weapon/3.webp"
             alt="Step 3: Stencil Buffer Magic"
             width={800}
             height={400}
@@ -96,7 +96,7 @@ export default function WeaponShadersPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/weapon/4.jpg"
+            src="/blog/weapon/4.webp"
             alt="Step 4: Glow Sprite"
             width={800}
             height={400}

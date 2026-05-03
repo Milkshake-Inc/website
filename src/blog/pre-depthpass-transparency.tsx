@@ -13,7 +13,7 @@ export default function PreDepthPassPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/wow/1.jpg"
+            src="/blog/wow/1.webp"
             alt="World of Warcraft transparency example"
             width={800}
             height={400}
@@ -33,7 +33,7 @@ export default function PreDepthPassPost() {
 
         <div className="my-6">
           <Image
-            src="/blog/wow/2.jpg"
+            src="/blog/wow/2.webp"
             alt="RenderDoc debugging setup"
             width={800}
             height={400}

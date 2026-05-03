@@ -5,8 +5,8 @@ export default function Page() {
     <WorkPage
 
       title="Crops And Robbers"
-      image="/images/work/cropsandrobbers_nologo.png"
-      logo="/images/logos/cropsandrobbers.png"
+      image="/images/work/cropsandrobbers_nologo.webp"
+      logo="/images/logos/cropsandrobbers.webp"
       pastel="#c9f2d4"
       tag="Strategy · Multiplayer"
       description="An innovative multiplayer farming game in development that pits farmers against robbers in an exciting strategic battle."

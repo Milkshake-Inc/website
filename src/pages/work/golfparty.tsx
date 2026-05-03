@@ -5,8 +5,8 @@ export default function Page() {
     <WorkPage
 
       title="GolfParty.io"
-      image="/images/work/golfparty_nologo.png"
-      logo="/images/logos/golfparty.png"
+      image="/images/work/golfparty_nologo.webp"
+      logo="/images/logos/golfparty.webp"
       pastel="#ffd6e0"
       tag="Multiplayer · Web"
       description="A fast-paced multiplayer golf game hosted on Poki where players compete in real-time matches."

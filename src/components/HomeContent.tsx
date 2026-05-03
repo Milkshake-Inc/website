@@ -8,32 +8,32 @@ import { useEffect, useState } from "react";
 const games = [
   {
     title: "GolfParty.io",
-    image: "/images/work/golfparty_nologo.png",
-    logo: "/images/logos/golfparty.png",
+    image: "/images/work/golfparty_nologo.webp",
+    logo: "/images/logos/golfparty.webp",
     tag: "Multiplayer · Web",
     desc: "Fast-paced multiplayer golf hosted on Poki.",
     href: "/work/golfparty",
   },
   {
     title: "Seedle.io",
-    image: "/images/work/seedle_nologo.png",
-    logo: "/images/logos/seedle.png",
+    image: "/images/work/seedle_nologo.webp",
+    logo: "/images/logos/seedle.webp",
     tag: "Puzzle · Cozy",
     desc: "A cozy puzzle where you place tiles to grow crops.",
     href: "/work/seedle",
   },
   {
     title: "Crops And Robbers",
-    image: "/images/work/cropsandrobbers_nologo.png",
-    logo: "/images/logos/cropsandrobbers.png",
+    image: "/images/work/cropsandrobbers_nologo.webp",
+    logo: "/images/logos/cropsandrobbers.webp",
     tag: "Strategy · Multiplayer",
     desc: "Farmers vs robbers in a strategic multiplayer battle.",
     href: "/work/crops-and-robbers",
   },
   {
     title: "Burgaagh!",
-    image: "/images/work/burger_nologo.png",
-    logo: "/images/logos/burger.png",
+    image: "/images/work/burger_nologo.webp",
+    logo: "/images/logos/burger.webp",
     tag: "Casual · Mobile",
     desc: "Stack burgers — timing, balance, style.",
     href: "/work/burgaagh",
@@ -52,19 +52,19 @@ const blogPosts: BlogPost[] = [
   {
     title: lightmappingMetadata.title,
     href: "/blog/lightmapping-threejs",
-    image: "/blog/lightmaps/lightmap5.png",
+    image: "/blog/lightmaps/lightmap5.webp",
     description: "GPU-accelerated lightmap generation in Three.js with path tracing and UV2 baking.",
   },
   {
     title: preDepthPassMetadata.title,
     href: "/blog/pre-depthpass-transparency",
-    image: "/blog/wow/1.jpg",
+    image: "/blog/wow/1.webp",
     description: "Recreating WoW-style transparency behavior using a depth pre-pass rendering approach.",
   },
   {
     title: weaponShadersMetadata.title,
     href: "/blog/weapon-shader",
-    image: "/blog/weapon/1.jpg",
+    image: "/blog/weapon/1.webp",
     video: "/blog/weapon/0.mp4",
     description: "A breakdown of stencil and Fresnel techniques for stylized weapon outlines and glow.",
   },
@@ -119,7 +119,7 @@ export function HomeContent() {
           <div className="flex flex-col items-center gap-0">
             <span className="face-hover">
               <Image
-                src="/images/faces/lucas.png"
+                src="/images/faces/lucas.webp"
                 alt="Lucas"
                 width={220}
                 height={220}
@@ -144,7 +144,7 @@ export function HomeContent() {
             <span className="face-hover">
               <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
                 <Image
-                  src="/images/faces/andrew.png"
+                  src="/images/faces/andrew.webp"
                   alt="Andrew"
                   width={220}
                   height={220}

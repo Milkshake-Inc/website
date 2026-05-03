@@ -5,8 +5,8 @@ export default function Page() {
     <WorkPage
 
       title="Burgaagh!"
-      image="/images/work/burger_nologo.png"
-      logo="/images/logos/burger.png"
+      image="/images/work/burger_nologo.webp"
+      logo="/images/logos/burger.webp"
       pastel="#cfe4ff"
       tag="Casual · Mobile"
       description="A delightful casual burger stacking game in development where players stack burgers with precision and style."

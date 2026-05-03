@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en" data-scroll-behavior="smooth">
       <Head>
-        <link rel="icon" href="/icons/favi.png" />
+        <link rel="icon" href="/icons/favi.webp" />
       </Head>
       <body className="antialiased">
         <Main />
