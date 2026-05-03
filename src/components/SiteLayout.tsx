@@ -89,6 +89,7 @@ export function SiteFooter() {
               hello@milkshake.io
             </a>
           </div>
+          <p className="text-xs text-[#1f1f1f]/60">Copyright © Milkshake Games Ltd</p>
         </div>
       </footer>
     </div>
