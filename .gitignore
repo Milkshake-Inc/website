@@ -42,3 +42,5 @@ next-env.d.ts
 
 website.mov
 website.mp4
+public/images/work/*.mov
+public/images/work/rankle.png
