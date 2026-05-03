@@ -1,8 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
 import { metadata as lightmappingMetadata } from "@/blog/lightmapping-threejs";
 import { metadata as preDepthPassMetadata } from "@/blog/pre-depthpass-transparency";
 import { metadata as weaponShadersMetadata } from "@/blog/weapon-shader";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const games = [
   {
@@ -70,20 +71,44 @@ const blogPosts: BlogPost[] = [
 ];
 
 const pastels = ["#ffd6e0", "#ffe9b3", "#c9f2d4", "#cfe4ff"];
+const sprinkleColors = ["#25d6ba", "#ff9aac", "#ffe14b", "#a9d8ff", "#c9a9ff", "#ffc7a0"];
+const cycleWords = ["silly", "fun", "party"];
+
+function CyclingWord({ words, colors, intervalMs = 1000 }: { words: string[]; colors: string[]; intervalMs?: number }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((v) => (v + 1) % words.length), intervalMs);
+    return () => clearInterval(id);
+  }, [words.length, intervalMs]);
+  const color = colors[i % colors.length];
+  const textColor = color === "#ffe14b" ? "#1f1f1f" : "#ffffff";
+  return (
+    <span className="relative inline-grid align-baseline" style={{ transform: "rotate(-4deg)" }}>
+      {words.map((w, idx) => (
+        <span
+          key={w}
+          aria-hidden={idx !== i}
+          className="inline-block px-3 pb-2 pt-1 transition-colors duration-300"
+          style={{
+            gridArea: "1 / 1",
+            background: idx === i ? color : "transparent",
+            color: idx === i ? textColor : "transparent",
+            lineHeight: 0.95,
+          }}
+        >
+          {w}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export function HomeContent() {
   return (
     <>
       <section className="px-8 pb-32 pt-12 text-center">
         <h1 className="mx-auto max-w-3xl text-7xl" style={{ letterSpacing: "-0.02em" }}>
-          We make{" "}
-          <span
-            className="inline-block bg-[#25d6ba] px-3 pb-2 pt-1 text-white"
-            style={{ transform: "rotate(-4deg)", lineHeight: 0.95 }}
-          >
-            silly
-          </span>{" "}
-          games
+          We make <CyclingWord words={cycleWords} colors={sprinkleColors} /> games
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-[#555]">
           A two-person studio shipping bright, weird, and joyful games on the web.
