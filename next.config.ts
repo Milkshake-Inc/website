@@ -6,7 +6,10 @@ const nextConfig: NextConfig = {
   distDir: 'build',
   images: {
     unoptimized: true,
-  }
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;

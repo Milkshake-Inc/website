@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #323232;
+  --muted: #767676;
+  --border: #e6e6e6;
+  --accent: #25d6ba;
+  --accent-hover: #25b29c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-fredoka);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-fredoka), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+/* Headings: Fredoka, friendly rounded display */
+h1, h2, h3, h4, h5, h6,
+.font-display {
+  font-family: var(--font-fredoka), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  color: #323232;
+}
+
+h1, h2 {
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  line-height: 1.1;
+}
+
+.nav-link {
+  font-family: var(--font-fredoka), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  position: relative;
+  padding: 0.4em 0.85em;
+  border-radius: 9999px;
+  color: #323232;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.nav-link:hover {
+  color: #fff !important;
+  background-color: #25d6ba;
+}
+
+.nav-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Lead paragraph: Fingersoft uses 1.33rem mobile, 1.875rem desktop */
+.lead {
+  font-size: 1.33rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .lead {
+    font-size: 1.875rem;
+  }
+}
+
+.btn {
+  font-family: var(--font-fredoka), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #25d6ba;
+  background: transparent;
+  border: 2px solid #25d6ba;
+  border-radius: 9999px;
+  padding: 0.55em 1.4em;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #25d6ba;
+  color: #fff;
+}
+
+.game-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.07);
+}
+
+.tilt-tile {
+  transform: rotate(var(--rot, 0deg));
+  transition: transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tilt-tile:hover {
+  transform: rotate(var(--rot, 0deg)) scale(1.04);
+}
+
+.page-transition {
+  animation: page-fade 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes page-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.modal-backdrop {
+  animation: modal-fade-in 220ms ease-out;
+}
+
+.modal-panel {
+  animation: modal-pop-in 360ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-pop-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.blog-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.07);
+}
+
+/* Footer nav: Fingersoft uses .75rem */
+.footer-link {
+  font-size: 0.75rem;
+  color: #767676;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.footer-link:hover {
+  color: #323232;
+}
+
+/* Prose overrides for blog content components */
+.prose-light .text-gray-600 {
+  color: #323232;
+}
+
+.prose-light .text-gray-900 {
+  color: #323232;
+}
+
+.prose-light .bg-black.text-white {
+  background-color: #25d6ba;
+  color: #fff;
+  border-radius: 3px;
+  padding: 0.15em 0.4em;
+}
+
+.prose-light .bg-black.text-white:hover {
+  background-color: #25b29c;
+}
+
+.prose-light .bg-gray-100 {
+  background-color: #f0f0f0;
+}
+
+.prose-light p,
+.prose-light li {
+  color: #323232;
+}
+
+.prose-light h3 {
+  color: #323232;
+}
+
+.prose-light strong {
+  color: #323232;
+}
+
+.prose-light code {
+  color: #0d6e5e;
+  background-color: #f0f0f0;
+}
+
+.prose-light pre {
+  background-color: #f0f0f0;
+  border: 1px solid #e6e6e6;
 }
