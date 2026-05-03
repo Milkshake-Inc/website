@@ -85,20 +85,10 @@ export function SiteFooter() {
             made with <span className="text-[#ff5e9b]">♥</span> by two people, somewhere on the internet.
           </p>
           <div className="flex gap-5 text-sm">
-            <Link href="/#games" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
-              games
-            </Link>
-            <Link href="/#blog" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
-              blog
-            </Link>
-            <Link href="/#about" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
-              about
-            </Link>
             <a href="mailto:hello@milkshake.io" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
-              say hi
+              hello@milkshake.io
             </a>
           </div>
-          <p className="mt-1 text-xs text-[#1f1f1f]/60">© milkshake games · {new Date().getFullYear()}</p>
         </div>
       </footer>
     </div>
@@ -145,14 +135,15 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
         {sprinkles.map((s, i) => (
           <span
             key={i}
-            className="absolute h-[14px] w-[40px] md:h-[26px] md:w-[70px]"
+            className="sprinkle-fade absolute h-[14px] w-[40px] md:h-[26px] md:w-[70px]"
             style={{
               top: s.top,
               left: s.left,
               background: s.color,
               borderRadius: 999,
               transform: `rotate(${s.rot}deg)`,
-            }}
+              ["--delay" as string]: `${i * 10}ms`,
+            } as React.CSSProperties}
           />
         ))}
       </div>
