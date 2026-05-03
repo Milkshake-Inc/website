@@ -8,10 +8,10 @@ export default function Page() {
       video="/images/work/cropsandrobbers.mp4"
       logo="/images/logos/cropsandrobbers.webp"
       tag="Strategy · Multiplayer"
-      description="An innovative multiplayer farming game in development that pits farmers against robbers in an exciting strategic battle."
-      content={`Crops And Robbers is an innovative multiplayer farming game currently in development. The game offers a unique twist on the farming genre by pitting farmers against robbers in an exciting strategic battle.
+      description="A multiplayer farming game we're working on. Farmers grow. Robbers steal. Things get heated."
+      content={`Pick a side. Farmers spend the round growing crops and defending their land. Robbers spend it sneaking in and grabbing the harvest before anyone notices.
 
-Players can choose to cultivate crops and build their farm, or take on the role of robbers trying to steal the harvest. With real-time multiplayer mechanics, dynamic gameplay, and strategic depth, Crops And Robbers promises to deliver a fresh take on multiplayer gaming.`}
+Real-time, tactical, and just the right amount of chaotic. Still in development.`}
     />
   );
 }

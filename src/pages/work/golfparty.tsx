@@ -9,10 +9,10 @@ export default function Page() {
       video="/images/work/golfparty.mp4"
       logo="/images/logos/golfparty.webp"
       tag="Multiplayer · Web"
-      description="A fast-paced multiplayer golf game hosted on Poki where players compete in real-time matches."
-      content={`GolfParty.io is a fast-paced multiplayer golf game that brings friends together for competitive rounds. Hosted on Poki's platform, the game features intuitive controls and dynamic courses that make each match exciting and unpredictable.
+      description="Quick, multiplayer golf you can play in your browser. Hosted on Poki."
+      content={`Pick a club, line up your shot, and try to land it before your friends do. GolfParty is built for short games and big swings, with courses that change every round.
 
-The game combines classic golf mechanics with modern multiplayer fun, allowing players to compete in real-time matches. With smooth gameplay and engaging competitive elements, GolfParty.io offers an accessible yet challenging golf experience for players of all skill levels.`}
+Easy to pick up. Hard to put down. Lots of chaos.`}
     />
   );
 }

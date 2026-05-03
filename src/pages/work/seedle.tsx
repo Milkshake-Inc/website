@@ -10,10 +10,10 @@ export default function Page() {
       fit="contain"
       logo="/images/logos/seedle.webp"
       tag="Puzzle · Cozy"
-      description="A cozy puzzle game where you place tiles to grow crops, avoid obstacles, and harvest your garden."
-      content={`Seedle.io is a cozy tile-placement puzzle game where players strategically place hand tiles onto a garden grid to grow crops and score points. Each round presents a new set of seed, tool, and obstacle tiles that must all be placed before the harvest.
+      description="A cosy puzzle about growing things. Place your tiles, dodge the rocks, harvest your garden."
+      content={`Each round you get a hand of seeds, tools, and a few things in the way. Lay them out on the grid, set up combos, and pick up points when the harvest comes round.
 
-With its charming art style, satisfying gameplay loop, and accessible mechanics, Seedle.io offers a relaxing yet strategic experience. Players must balance risk and reward as they navigate rocks, weather tiles, and limited grid space to cultivate the best garden possible.`}
+Easy to pick up, with just enough to think about. A nice one to play with a cup of tea.`}
     />
   );
 }

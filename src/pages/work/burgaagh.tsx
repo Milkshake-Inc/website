@@ -8,10 +8,10 @@ export default function Page() {
       video="/images/work/burger.mp4"
       logo="/images/logos/burger.webp"
       tag="Casual · Mobile"
-      description="A delightful casual burger stacking game in development where players stack burgers with precision and style."
-      content={`Burgaagh! is a delightful casual burger stacking game currently in development. Players stack burgers with precision and style, creating the perfect burger tower while navigating increasingly challenging levels.
+      description="A burger stacking game we're working on. Time it right, balance it, build the tallest tower you can."
+      content={`Stack the patties, fit the lettuce, top it off with the bun. Each level adds something new to throw you off, and the tower wobbles more the higher it gets.
 
-Featuring charming visuals, satisfying physics, and progressively challenging gameplay, Burgaagh! offers a relaxing yet engaging experience. Perfect for quick gaming sessions, the game combines skill-based stacking mechanics with fun, lighthearted gameplay that appeals to players of all ages.`}
+Charming visuals, satisfying physics, and bite-sized levels for quick play.`}
     />
   );
 }
