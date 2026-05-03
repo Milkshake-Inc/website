@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Milkshake</title>
+        <title>Milkshake Games</title>
         <meta name="description" content="Games by Milkshake" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -29,17 +29,17 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <SiteLayout>
-        {isModal ? (
-          <>
-            <HomeContent />
-            <Modal>
-              <Component {...pageProps} />
-            </Modal>
-          </>
+        {router.pathname === "/" || isModal ? (
+          <HomeContent />
         ) : (
           <div key={router.asPath} className="page-transition">
             <Component {...pageProps} />
           </div>
+        )}
+        {isModal && (
+          <Modal maxWidth={router.pathname.startsWith("/blog/") ? "max-w-5xl" : "max-w-3xl"}>
+            <Component {...pageProps} />
+          </Modal>
         )}
       </SiteLayout>
     </>

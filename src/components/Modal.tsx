@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, type ReactNode } from "react";
 
-export function Modal({ children }: { children: ReactNode }) {
+export function Modal({ children, maxWidth = "max-w-3xl" }: { children: ReactNode; maxWidth?: string }) {
   const router = useRouter();
 
   const close = () => {
@@ -23,19 +23,19 @@ export function Modal({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-10 md:px-8">
       <div
-        className="modal-backdrop absolute inset-0 bg-[#1f1f1f]/40"
+        className="modal-backdrop fixed inset-0 bg-[#1f1f1f]/40"
         style={{ backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
         onClick={close}
       />
-      <div className="modal-panel relative z-10 my-6 w-full max-w-5xl px-3 md:my-10 md:px-6">
+      <div className={`modal-panel relative z-10 m-auto w-full ${maxWidth}`}>
         <button
           onClick={close}
           aria-label="Close"
-          className="mb-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#1f1f1f] bg-white text-lg shadow-[0_3px_0_#1f1f1f] hover:bg-[#1f1f1f] hover:text-white"
+          className="absolute -right-3 -top-3 z-20 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#1f1f1f] bg-white text-4xl leading-none shadow-[0_4px_0_#1f1f1f] transition-transform hover:-translate-y-0.5 hover:bg-[#ff9aac] md:-right-6 md:-top-6"
         >
-          ×
+          <span className="-mt-1">×</span>
         </button>
         {children}
       </div>

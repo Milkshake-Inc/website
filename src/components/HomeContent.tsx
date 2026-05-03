@@ -110,9 +110,47 @@ export function HomeContent() {
         <h1 className="mx-auto max-w-3xl text-7xl" style={{ letterSpacing: "-0.02em" }}>
           We make <CyclingWord words={cycleWords} colors={sprinkleColors} /> games
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-[#555]">
-          A two-person studio shipping bright, weird, and joyful games on the web.
-        </p>
+        <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
+          <div className="flex flex-col items-center gap-0">
+            <span className="face-hover">
+              <Image
+                src="/images/faces/lucas.png"
+                alt="Lucas"
+                width={220}
+                height={220}
+                priority
+                className="face-bounce h-52 w-52 object-contain md:h-64 md:w-64"
+                style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "120ms" } as React.CSSProperties}
+              />
+            </span>
+          </div>
+          <span
+            className="x-pop -mt-6 select-none text-7xl font-black leading-none text-[#1f1f1f] md:text-8xl"
+            style={{
+              WebkitTextStroke: "2px #1f1f1f",
+              textShadow:
+                "-4px 0 #fff, 4px 0 #fff, 0 -4px #fff, 0 4px #fff, -3px -3px #fff, 3px -3px #fff, -3px 3px #fff, 3px 3px #fff",
+            }}
+            aria-hidden
+          >
+            ×
+          </span>
+          <div className="flex flex-col items-center gap-0">
+            <span className="face-hover">
+              <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
+                <Image
+                  src="/images/faces/andrew.png"
+                  alt="Andrew"
+                  width={220}
+                  height={220}
+                  priority
+                  className="face-bounce h-52 w-52 object-contain md:h-64 md:w-64"
+                  style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "260ms" } as React.CSSProperties}
+                />
+              </span>
+            </span>
+          </div>
+        </div>
       </section>
 
       <section id="games" className="mx-auto grid max-w-6xl scroll-mt-20 grid-cols-1 gap-6 px-8 pb-16 md:grid-cols-2">
@@ -125,7 +163,7 @@ export function HomeContent() {
             style={{ background: pastels[i], ["--rot" as string]: `${i % 2 ? 0.8 : -0.8}deg` } as React.CSSProperties}
           >
             <div className="aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]">
-              <Image src={g.image} alt="" width={500} height={280} className="h-full w-full object-cover" />
+              <Image src={g.image} alt="" width={500} height={280} priority className="h-full w-full object-cover" />
             </div>
             <div className="flex items-center gap-5 p-5">
               <div className="flex h-20 w-1/3 flex-shrink-0 items-center justify-center">
@@ -146,6 +184,15 @@ export function HomeContent() {
           </Link>
         ))}
       </section>
+
+      <div aria-hidden className="pointer-events-none fixed -left-[9999px] -top-[9999px] h-px w-px overflow-hidden">
+        {games.map(g => (
+          <Image key={`pre-${g.image}`} src={g.image} alt="" width={1600} height={900} loading="eager" />
+        ))}
+        {games.map(g => (
+          <Image key={`pre-${g.logo}`} src={g.logo} alt="" width={500} height={150} loading="eager" />
+        ))}
+      </div>
 
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-20 pt-8">
         <h2 className="mb-10 text-center text-5xl">Latest posts</h2>
