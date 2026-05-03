@@ -94,13 +94,8 @@ const cycleWords: { word: string; color: string }[] = [
   { word: "party", color: "#c9a9ff" },
 ];
 
-function GameCardMedia({ image, video, fit }: { image: string; video?: string; fit?: "cover" | "contain" }) {
-  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
+function useGameVideo(touch: boolean) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [touch, setTouch] = useState(false);
-  useEffect(() => {
-    setTouch(window.matchMedia("(hover: none)").matches);
-  }, []);
   useEffect(() => {
     if (!touch) return;
     const v = videoRef.current;
@@ -131,22 +126,27 @@ function GameCardMedia({ image, video, fit }: { image: string; video?: string; f
       io.disconnect();
     };
   }, [touch]);
+  return videoRef;
+}
+
+function GameCardMedia({
+  image,
+  video,
+  fit,
+  videoRef,
+  touch,
+}: {
+  image: string;
+  video?: string;
+  fit?: "cover" | "contain";
+  videoRef: React.RefObject<HTMLVideoElement | null>;
+  touch: boolean;
+}) {
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
   return (
     <div
-      className="group relative aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]"
+      className="relative aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]"
       style={{ background: "#f5f0e8" }}
-      onMouseEnter={
-        touch
-          ? undefined
-          : () => {
-              const v = videoRef.current;
-              if (v) {
-                v.currentTime = 0;
-                v.play().catch(() => {});
-              }
-            }
-      }
-      onMouseLeave={touch ? undefined : () => videoRef.current?.pause()}
     >
       <Image src={image} alt="" width={500} height={280} priority className={`h-full w-full ${fitClass}`} />
       {video && (
@@ -163,6 +163,57 @@ function GameCardMedia({ image, video, fit }: { image: string; video?: string; f
           }`}
         />
       )}
+    </div>
+  );
+}
+
+function GameCard({ game, index, pastel }: { game: Game; index: number; pastel: string }) {
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+  const videoRef = useGameVideo(touch);
+  const onEnter = touch
+    ? undefined
+    : () => {
+        const v = videoRef.current;
+        if (v) {
+          v.currentTime = 0;
+          v.play().catch(() => {});
+        }
+      };
+  const onLeave = touch ? undefined : () => videoRef.current?.pause();
+  return (
+    <div
+      className="card-pop"
+      style={{ ["--delay" as string]: `${500 + index * 100}ms` } as React.CSSProperties}
+    >
+      <Link
+        href={game.href}
+        scroll={false}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
+        className="tilt-tile group block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
+        style={{ background: pastel, ["--rot" as string]: `${index % 2 ? 0.8 : -0.8}deg` } as React.CSSProperties}
+      >
+        <GameCardMedia image={game.image} video={game.video} fit={game.fit} videoRef={videoRef} touch={touch} />
+        <div className="flex items-center gap-5 p-5">
+          <div className="flex h-20 w-1/3 flex-shrink-0 items-center justify-center">
+            <Image
+              src={game.logo}
+              alt={game.title}
+              width={300}
+              height={120}
+              className="max-h-full max-w-full"
+              style={{ width: "auto", height: "auto", objectFit: "contain" }}
+            />
+          </div>
+          <div className="flex-1 border-l-2 border-[#1f1f1f]/15 pl-5">
+            <p className="text-xs uppercase tracking-widest text-[#1f1f1f]/60">{game.tag}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[#1f1f1f]">{game.desc}</p>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }
@@ -320,36 +371,7 @@ export function HomeContent() {
 
       <section id="games" className="mx-auto grid max-w-6xl scroll-mt-20 grid-cols-1 gap-6 px-8 pb-16 md:grid-cols-2">
         {games.map((g, i) => (
-          <div
-            key={g.title}
-            className="card-pop"
-            style={{ ["--delay" as string]: `${500 + i * 100}ms` } as React.CSSProperties}
-          >
-          <Link
-            href={g.href}
-            scroll={false}
-            className="tilt-tile block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
-            style={{ background: pastels[i], ["--rot" as string]: `${i % 2 ? 0.8 : -0.8}deg` } as React.CSSProperties}
-          >
-            <GameCardMedia image={g.image} video={g.video} fit={g.fit} />
-            <div className="flex items-center gap-5 p-5">
-              <div className="flex h-20 w-1/3 flex-shrink-0 items-center justify-center">
-                <Image
-                  src={g.logo}
-                  alt={g.title}
-                  width={300}
-                  height={120}
-                  className="max-h-full max-w-full"
-                  style={{ width: "auto", height: "auto", objectFit: "contain" }}
-                />
-              </div>
-              <div className="flex-1 border-l-2 border-[#1f1f1f]/15 pl-5">
-                <p className="text-xs uppercase tracking-widest text-[#1f1f1f]/60">{g.tag}</p>
-                <p className="mt-2 text-sm leading-relaxed text-[#1f1f1f]">{g.desc}</p>
-              </div>
-            </div>
-          </Link>
-          </div>
+          <GameCard key={g.title} game={g} index={i} pastel={pastels[i]} />
         ))}
       </section>
 
