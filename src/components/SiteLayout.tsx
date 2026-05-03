@@ -19,8 +19,12 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
     const y = 2 + rand() * (yRange - 4);
     let ok = true;
     for (const p of points) {
-      const dx = p.x - x, dy = p.y - y;
-      if (dx * dx + dy * dy < minDist * minDist) { ok = false; break; }
+      const dx = p.x - x,
+        dy = p.y - y;
+      if (dx * dx + dy * dy < minDist * minDist) {
+        ok = false;
+        break;
+      }
     }
     if (ok) points.push({ x, y });
   }
@@ -34,14 +38,20 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
 
 export function SiteNav() {
   return (
-    <nav className="mx-auto flex max-w-6xl items-center justify-between px-8 py-6">
+    <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 md:px-8">
       <Link href="/">
         <Image src="/icons/milkshakelogo.png" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
       </Link>
-      <div className="flex gap-7">
-        <Link href="/#games" className="text-lg font-medium text-[#1f1f1f] hover:text-[#25d6ba]">games</Link>
-        <Link href="/#blog" className="text-lg font-medium text-[#1f1f1f] hover:text-[#25d6ba]">blog</Link>
-        <Link href="/#about" className="text-lg font-medium text-[#1f1f1f] hover:text-[#25d6ba]">about</Link>
+      <div className="flex gap-4 md:gap-7">
+        <Link href="/#games" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
+          games
+        </Link>
+        <Link href="/#blog" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
+          blog
+        </Link>
+        <Link href="/#about" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
+          about
+        </Link>
       </div>
     </nav>
   );
@@ -49,7 +59,7 @@ export function SiteNav() {
 
 export function SiteFooter() {
   return (
-    <div className="relative mt-12">
+    <div className="relative mt-2 md:mt-12">
       <svg viewBox="0 0 1280 120" preserveAspectRatio="none" className="hidden h-24 w-full md:block" aria-hidden>
         <path
           d="M0,80 C100,10 220,130 340,70 C460,10 580,130 700,70 C820,10 940,130 1060,70 C1180,20 1240,110 1280,80 L1280,120 L0,120 Z"
@@ -71,10 +81,18 @@ export function SiteFooter() {
             made with <span className="text-[#ff5e9b]">♥</span> by two people, somewhere on the internet.
           </p>
           <div className="flex gap-5 text-sm">
-            <Link href="/#games" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">games</Link>
-            <Link href="/#blog" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">blog</Link>
-            <Link href="/#about" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">about</Link>
-            <a href="mailto:hi@milkshake.games" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">say hi</a>
+            <Link href="/#games" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
+              games
+            </Link>
+            <Link href="/#blog" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
+              blog
+            </Link>
+            <Link href="/#about" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
+              about
+            </Link>
+            <a href="mailto:hello@milkshake.io" className="underline decoration-2 underline-offset-4 hover:text-[#25d6ba]">
+              say hi
+            </a>
           </div>
           <p className="mt-1 text-xs text-[#1f1f1f]/60">© milkshake games · {new Date().getFullYear()}</p>
         </div>

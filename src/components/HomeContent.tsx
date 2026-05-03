@@ -194,7 +194,7 @@ export function HomeContent() {
         ))}
       </div>
 
-      <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-20 pt-8">
+      <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
         <h2 className="mb-10 text-center text-5xl">Latest posts</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, i) => (
