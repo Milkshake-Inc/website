@@ -54,6 +54,15 @@ const games: Game[] = [
     desc: "Stack burgers — timing, balance, style.",
     href: "/work/burgaagh",
   },
+  {
+    title: "Rankle",
+    image: "/images/work/rankle_nologo.webp",
+    logo: "/images/logos/rankle.webp",
+    tag: "Daily · Web",
+    desc: "Rank the answers — only your top 5 are scored.",
+    href: "/work/rankle",
+    fit: "contain",
+  },
 ];
 
 type BlogPost = {
@@ -86,7 +95,7 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-const pastels = ["#ffd6e0", "#ffe9b3", "#c9f2d4", "#cfe4ff"];
+const pastels = ["#ffd6e0", "#ffe9b3", "#c9f2d4", "#cfe4ff", "#e9d6ff"];
 const sprinkleColors = ["#25d6ba", "#ff9aac", "#ffe14b", "#a9d8ff", "#c9a9ff", "#ffc7a0"];
 const cycleWords: { word: string; color: string }[] = [
   { word: "silly", color: "#25d6ba" },
