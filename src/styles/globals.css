@@ -28,6 +28,30 @@ img {
   user-select: none;
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #1f1f1f #fff8ee;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #fff8ee;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border: 3px solid #fff8ee;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #25d6ba;
+}
+::-webkit-scrollbar-corner {
+  background: #fff8ee;
+}
+
 .text-halo {
   text-shadow:
     -3px 0 #fff, 3px 0 #fff, 0 -3px #fff, 0 3px #fff,
