@@ -72,19 +72,23 @@ const blogPosts: BlogPost[] = [
 
 const pastels = ["#ffd6e0", "#ffe9b3", "#c9f2d4", "#cfe4ff"];
 const sprinkleColors = ["#25d6ba", "#ff9aac", "#ffe14b", "#a9d8ff", "#c9a9ff", "#ffc7a0"];
-const cycleWords = ["silly", "fun", "party"];
+const cycleWords: { word: string; color: string }[] = [
+  { word: "silly", color: "#25d6ba" },
+  { word: "fun", color: "#ff9aac" },
+  { word: "party", color: "#c9a9ff" },
+];
 
-function CyclingWord({ words, colors, intervalMs = 1000 }: { words: string[]; colors: string[]; intervalMs?: number }) {
+function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; color: string }[]; intervalMs?: number }) {
   const [i, setI] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setI((v) => (v + 1) % words.length), intervalMs);
+    const id = setInterval(() => setI((v) => (v + 1) % items.length), intervalMs);
     return () => clearInterval(id);
-  }, [words.length, intervalMs]);
-  const color = colors[i % colors.length];
-  const textColor = color === "#ffe14b" ? "#1f1f1f" : "#ffffff";
+  }, [items.length, intervalMs]);
+  const color = items[i].color;
+  const textColor = "#ffffff";
   return (
     <span className="relative inline-grid align-baseline" style={{ transform: "rotate(-4deg)" }}>
-      {words.map((w, idx) => (
+      {items.map(({ word: w }, idx) => (
         <span
           key={w}
           aria-hidden={idx !== i}
@@ -94,6 +98,7 @@ function CyclingWord({ words, colors, intervalMs = 1000 }: { words: string[]; co
             background: idx === i ? color : "transparent",
             color: idx === i ? textColor : "transparent",
             lineHeight: 0.95,
+            textShadow: "none",
           }}
         >
           {w}
@@ -106,9 +111,9 @@ function CyclingWord({ words, colors, intervalMs = 1000 }: { words: string[]; co
 export function HomeContent() {
   return (
     <>
-      <section className="px-8 pb-32 pt-12 text-center">
-        <h1 className="mx-auto max-w-3xl text-7xl" style={{ letterSpacing: "-0.02em" }}>
-          We make <CyclingWord words={cycleWords} colors={sprinkleColors} /> games
+      <section className="px-8 pb-10 pt-12 text-center">
+        <h1 className="text-halo mx-auto max-w-3xl text-7xl" style={{ letterSpacing: "-0.02em" }}>
+          We make <CyclingWord items={cycleWords} /> games
         </h1>
         <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
           <div className="flex flex-col items-center gap-0">
@@ -151,6 +156,12 @@ export function HomeContent() {
             </span>
           </div>
         </div>
+      </section>
+
+      <section id="about" className="mx-auto max-w-2xl scroll-mt-20 px-8 pb-20 pt-2 text-center">
+        <p className="text-base leading-relaxed text-[#1f1f1f] md:text-lg">
+          A two-person studio making fun, friendly games for the web. We design and ship everything ourselves.
+        </p>
       </section>
 
       <section id="games" className="mx-auto grid max-w-6xl scroll-mt-20 grid-cols-1 gap-6 px-8 pb-16 md:grid-cols-2">
