@@ -6,6 +6,8 @@ export default function Page() {
 
       title="Seedle.io"
       image="/images/work/seedle_nologo.webp"
+      video="/images/work/seedle.mp4"
+      fit="contain"
       logo="/images/logos/seedle.webp"
       pastel="#ffe9b3"
       tag="Puzzle · Cozy"

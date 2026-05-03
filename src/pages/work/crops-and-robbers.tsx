@@ -6,6 +6,7 @@ export default function Page() {
 
       title="Crops And Robbers"
       image="/images/work/cropsandrobbers_nologo.webp"
+      video="/images/work/cropsandrobbers.mp4"
       logo="/images/logos/cropsandrobbers.webp"
       pastel="#c9f2d4"
       tag="Strategy · Multiplayer"

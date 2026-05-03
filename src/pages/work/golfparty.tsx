@@ -6,6 +6,7 @@ export default function Page() {
 
       title="GolfParty.io"
       image="/images/work/golfparty_nologo.webp"
+      video="/images/work/golfparty.mp4"
       logo="/images/logos/golfparty.webp"
       pastel="#ffd6e0"
       tag="Multiplayer · Web"

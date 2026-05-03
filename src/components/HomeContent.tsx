@@ -3,12 +3,24 @@ import { metadata as preDepthPassMetadata } from "@/blog/pre-depthpass-transpare
 import { metadata as weaponShadersMetadata } from "@/blog/weapon-shader";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const games = [
+type Game = {
+  title: string;
+  image: string;
+  video?: string;
+  logo: string;
+  tag: string;
+  desc: string;
+  href: string;
+  fit?: "cover" | "contain";
+};
+
+const games: Game[] = [
   {
     title: "GolfParty.io",
     image: "/images/work/golfparty_nologo.webp",
+    video: "/images/work/golfparty.mp4",
     logo: "/images/logos/golfparty.webp",
     tag: "Multiplayer · Web",
     desc: "Fast-paced multiplayer golf hosted on Poki.",
@@ -17,14 +29,17 @@ const games = [
   {
     title: "Seedle.io",
     image: "/images/work/seedle_nologo.webp",
+    video: "/images/work/seedle.mp4",
     logo: "/images/logos/seedle.webp",
     tag: "Puzzle · Cozy",
     desc: "A cozy puzzle where you place tiles to grow crops.",
     href: "/work/seedle",
+    fit: "contain",
   },
   {
     title: "Crops And Robbers",
     image: "/images/work/cropsandrobbers_nologo.webp",
+    video: "/images/work/cropsandrobbers.mp4",
     logo: "/images/logos/cropsandrobbers.webp",
     tag: "Strategy · Multiplayer",
     desc: "Farmers vs robbers in a strategic multiplayer battle.",
@@ -33,6 +48,7 @@ const games = [
   {
     title: "Burgaagh!",
     image: "/images/work/burger_nologo.webp",
+    video: "/images/work/burger.mp4",
     logo: "/images/logos/burger.webp",
     tag: "Casual · Mobile",
     desc: "Stack burgers — timing, balance, style.",
@@ -78,6 +94,49 @@ const cycleWords: { word: string; color: string }[] = [
   { word: "party", color: "#c9a9ff" },
 ];
 
+function GameCardMedia({ image, video, fit }: { image: string; video?: string; fit?: "cover" | "contain" }) {
+  const fitClass = fit === "contain" ? "object-contain" : "object-cover";
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch(window.matchMedia("(hover: none)").matches);
+  }, []);
+  return (
+    <div
+      className="group relative aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]"
+      style={{ background: "#f5f0e8" }}
+      onMouseEnter={
+        touch
+          ? undefined
+          : () => {
+              const v = videoRef.current;
+              if (v) {
+                v.currentTime = 0;
+                v.play().catch(() => {});
+              }
+            }
+      }
+      onMouseLeave={touch ? undefined : () => videoRef.current?.pause()}
+    >
+      <Image src={image} alt="" width={500} height={280} priority className={`h-full w-full ${fitClass}`} />
+      {video && (
+        <video
+          ref={videoRef}
+          src={video}
+          muted
+          loop
+          playsInline
+          autoPlay={touch}
+          preload="metadata"
+          className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${fitClass} ${
+            touch ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
+        />
+      )}
+    </div>
+  );
+}
+
 function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; color: string }[]; intervalMs?: number }) {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -111,14 +170,14 @@ function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; colo
 export function HomeContent() {
   return (
     <>
-      <section className="px-8 pb-10 pt-12 text-center">
+      <section className="px-8 pb-2 pt-12 text-center">
         <h1
           className="fade-up text-halo mx-auto max-w-3xl text-7xl"
           style={{ letterSpacing: "-0.02em", ["--delay" as string]: "100ms" } as React.CSSProperties}
         >
           We make <CyclingWord items={cycleWords} /> games
         </h1>
-        <div className="mt-10 flex items-center justify-center gap-8 md:gap-12">
+        <div className="mt-10 flex items-center justify-center gap-2 md:gap-4">
           <div className="flex flex-col items-center gap-0">
             <span className="face-hover">
               <Image
@@ -161,13 +220,18 @@ export function HomeContent() {
         </div>
       </section>
 
-      <section id="about" className="mx-auto max-w-2xl scroll-mt-20 px-8 pb-20 pt-2 text-center">
-        <p
-          className="fade-up text-base leading-relaxed text-[#1f1f1f] md:text-lg"
+      <section id="about" className="scroll-mt-20 px-4 pb-32 pt-0 text-center">
+        <span
+          className="fade-up inline-block"
           style={{ ["--delay" as string]: "400ms" } as React.CSSProperties}
         >
-          A two-person studio making fun, friendly games for the web. We design and ship everything ourselves.
-        </p>
+          <p
+            className="text-halo whitespace-nowrap text-base font-bold leading-tight text-[#1f1f1f] md:text-2xl"
+            style={{ transform: "rotate(-1deg)" }}
+          >
+            A two-person studio making fun, friendly games for the web.
+          </p>
+        </span>
       </section>
 
       <section id="games" className="mx-auto grid max-w-6xl scroll-mt-20 grid-cols-1 gap-6 px-8 pb-16 md:grid-cols-2">
@@ -183,9 +247,7 @@ export function HomeContent() {
             className="tilt-tile block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
             style={{ background: pastels[i], ["--rot" as string]: `${i % 2 ? 0.8 : -0.8}deg` } as React.CSSProperties}
           >
-            <div className="aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]">
-              <Image src={g.image} alt="" width={500} height={280} priority className="h-full w-full object-cover" />
-            </div>
+            <GameCardMedia image={g.image} video={g.video} fit={g.fit} />
             <div className="flex items-center gap-5 p-5">
               <div className="flex h-20 w-1/3 flex-shrink-0 items-center justify-center">
                 <Image
@@ -218,10 +280,10 @@ export function HomeContent() {
 
       <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
         <h2
-          className="fade-up mb-10 text-center text-5xl"
+          className="fade-up text-halo mb-10 text-center text-5xl"
           style={{ ["--delay" as string]: "800ms" } as React.CSSProperties}
         >
-          Latest posts
+          Blog
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, i) => (

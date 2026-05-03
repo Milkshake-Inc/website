@@ -6,6 +6,7 @@ export default function Page() {
 
       title="Burgaagh!"
       image="/images/work/burger_nologo.webp"
+      video="/images/work/burger.mp4"
       logo="/images/logos/burger.webp"
       pastel="#cfe4ff"
       tag="Casual · Mobile"

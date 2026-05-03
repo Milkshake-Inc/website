@@ -49,9 +49,6 @@ export function SiteNav() {
         <Link href="/#blog" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
           blog
         </Link>
-        <Link href="/#about" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
-          about
-        </Link>
       </div>
     </nav>
   );
