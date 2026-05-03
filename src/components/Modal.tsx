@@ -23,17 +23,17 @@ export function Modal({ children, maxWidth = "max-w-3xl" }: { children: ReactNod
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-10 md:px-8">
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto md:px-8 md:py-10">
       <div
         className="modal-backdrop fixed inset-0 bg-[#1f1f1f]/40"
         style={{ backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}
         onClick={close}
       />
-      <div className={`modal-panel relative z-10 m-auto w-full ${maxWidth}`}>
+      <div className={`modal-panel relative z-10 w-full md:m-auto ${maxWidth}`}>
         <button
           onClick={close}
           aria-label="Close"
-          className="absolute -right-3 -top-3 z-20 flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#1f1f1f] bg-white text-4xl leading-none shadow-[0_4px_0_#1f1f1f] transition-transform hover:-translate-y-0.5 hover:bg-[#ff9aac] md:-right-6 md:-top-6"
+          className="fixed right-3 top-3 z-20 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#1f1f1f] bg-white text-3xl leading-none shadow-[0_4px_0_#1f1f1f] transition-transform hover:-translate-y-0.5 hover:bg-[#ff9aac] md:absolute md:-right-6 md:-top-6 md:h-16 md:w-16 md:text-4xl"
         >
           <span className="-mt-1">×</span>
         </button>

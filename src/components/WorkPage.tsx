@@ -13,7 +13,7 @@ type WorkPageProps = {
 export function WorkPage({ title, image, logo, pastel, description, content, tag }: WorkPageProps) {
   return (
     <article
-      className="overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
+      className="overflow-hidden md:rounded-3xl md:border-2 md:border-[#1f1f1f] md:shadow-[0_6px_0_#1f1f1f]"
       style={{ background: pastel }}
     >
       <div className="aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]">

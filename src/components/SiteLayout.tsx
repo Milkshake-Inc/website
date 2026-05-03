@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 const sprinkleColors = ["#ff9aac", "#ffe14b", "#9ee5d3", "#a9d8ff", "#c9a9ff", "#ffc7a0", "#25d6ba"];
 
@@ -50,9 +50,15 @@ export function SiteNav() {
 export function SiteFooter() {
   return (
     <div className="relative mt-12">
-      <svg viewBox="0 0 1280 120" preserveAspectRatio="none" className="block h-20 w-full md:h-24" aria-hidden>
+      <svg viewBox="0 0 1280 120" preserveAspectRatio="none" className="hidden h-24 w-full md:block" aria-hidden>
         <path
           d="M0,80 C100,10 220,130 340,70 C460,10 580,130 700,70 C820,10 940,130 1060,70 C1180,20 1240,110 1280,80 L1280,120 L0,120 Z"
+          fill="#ffffff"
+        />
+      </svg>
+      <svg viewBox="0 0 600 120" preserveAspectRatio="none" className="block h-16 w-full md:hidden" aria-hidden>
+        <path
+          d="M0,80 C150,10 300,130 600,70 L600,120 L0,120 Z"
           fill="#ffffff"
         />
       </svg>
@@ -89,18 +95,38 @@ type SiteLayoutProps = {
 
 export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: SiteLayoutProps) {
   const sprinkles = generateSprinkles(seed, count, yRange);
+  const layerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      if (layerRef.current) {
+        layerRef.current.style.transform = `translate3d(0, ${window.scrollY * 0.4}px, 0)`;
+      }
+    };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#fff8ee] text-[#1f1f1f]">
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0 will-change-transform">
         {sprinkles.map((s, i) => (
           <span
             key={i}
-            className="absolute"
+            className="absolute h-[14px] w-[40px] md:h-[26px] md:w-[70px]"
             style={{
               top: s.top,
               left: s.left,
-              width: 70,
-              height: 26,
               background: s.color,
               borderRadius: 999,
               transform: `rotate(${s.rot}deg)`,
