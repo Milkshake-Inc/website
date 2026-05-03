@@ -30,7 +30,7 @@ img {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: #c9a9ff #fff8ee;
+  scrollbar-color: #e6d9b8 #fff8ee;
 }
 
 ::-webkit-scrollbar {
@@ -41,12 +41,12 @@ html {
   background: #fff8ee;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9a9ff;
+  background: #e6d9b8;
   border: 3px solid #fff8ee;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #25d6ba;
+  background: #d3c194;
 }
 ::-webkit-scrollbar-corner {
   background: #fff8ee;
