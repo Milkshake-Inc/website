@@ -19,8 +19,24 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Milkshake Games</title>
-        <meta name="description" content="Games by Milkshake" />
+        <meta name="description" content="A two-person studio making silly, fun, party games for the web." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#fff8ee" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Milkshake Games" />
+        <meta property="og:title" content="Milkshake Games" />
+        <meta property="og:description" content="A two-person studio making silly, fun, party games for the web." />
+        <meta property="og:url" content="https://milkshake.io" />
+        <meta property="og:image" content="https://milkshake.io/og.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Milkshake Games — silly, fun, party games" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Milkshake Games" />
+        <meta name="twitter:description" content="A two-person studio making silly, fun, party games for the web." />
+        <meta name="twitter:image" content="https://milkshake.io/og.png" />
       </Head>
       <style jsx global>{`
         :root {
