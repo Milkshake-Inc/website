@@ -3,13 +3,12 @@ import { WorkPage } from "@/components/WorkPage";
 export default function Page() {
   return (
     <WorkPage
-
       title="Seedle.io"
+      playUrl="https://seedle.io"
       image="/images/work/seedle_nologo.webp"
       video="/images/work/seedle.mp4"
       fit="contain"
       logo="/images/logos/seedle.webp"
-      pastel="#ffe9b3"
       tag="Puzzle · Cozy"
       description="A cozy puzzle game where you place tiles to grow crops, avoid obstacles, and harvest your garden."
       content={`Seedle.io is a cozy tile-placement puzzle game where players strategically place hand tiles onto a garden grid to grow crops and score points. Each round presents a new set of seed, tool, and obstacle tiles that must all be placed before the harvest.

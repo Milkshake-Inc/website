@@ -32,6 +32,8 @@ function generateSprinkles(seed: number, target: number, yRange: number) {
     top: `${(p.y / yRange) * 100}%`,
     left: `${p.x}%`,
     rot: rand() * 360,
+    parallax: 0.25 + rand() * 0.4,
+    spin: (rand() - 0.5) * 0.06,
     color: sprinkleColors[i % sprinkleColors.length],
   }));
 }
@@ -46,8 +48,8 @@ export function SiteNav() {
         <Link href="/#games" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
           games
         </Link>
-        <Link href="/#blog" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
-          blog
+        <Link href="/#posts" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
+          posts
         </Link>
         <a href="mailto:hello@milkshake.io" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
           contact
@@ -115,7 +117,7 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
     const update = () => {
       raf = 0;
       if (layerRef.current) {
-        layerRef.current.style.transform = `translate3d(0, ${window.scrollY * 0.4}px, 0)`;
+        layerRef.current.style.setProperty("--scroll-n", `${window.scrollY}`);
       }
     };
     const onScroll = () => {
@@ -132,17 +134,17 @@ export function SiteLayout({ children, yRange = 200, count = 32, seed = 7 }: Sit
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#fff8ee] text-[#1f1f1f]">
-      <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0 will-change-transform">
+      <div ref={layerRef} className="pointer-events-none absolute inset-0 z-0">
         {sprinkles.map((s, i) => (
           <span
             key={i}
-            className="sprinkle-fade absolute h-[14px] w-[40px] md:h-[26px] md:w-[70px]"
+            className="sprinkle-fade absolute h-[14px] w-[40px] will-change-transform md:h-[26px] md:w-[70px]"
             style={{
               top: s.top,
               left: s.left,
               background: s.color,
               borderRadius: 999,
-              transform: `rotate(${s.rot}deg)`,
+              transform: `translate3d(0, calc(var(--scroll-n, 0) * ${s.parallax} * 1px), 0) rotate(calc(${s.rot}deg + var(--scroll-n, 0) * ${s.spin} * 1deg))`,
               ["--delay" as string]: `${i * 10}ms`,
             } as React.CSSProperties}
           />

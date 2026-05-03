@@ -101,6 +101,36 @@ function GameCardMedia({ image, video, fit }: { image: string; video?: string; f
   useEffect(() => {
     setTouch(window.matchMedia("(hover: none)").matches);
   }, []);
+  useEffect(() => {
+    if (!touch) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.setAttribute("muted", "");
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    v.addEventListener("loadedmetadata", tryPlay);
+    v.addEventListener("canplay", tryPlay);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") tryPlay();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) tryPlay();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    io.observe(v);
+    return () => {
+      v.removeEventListener("loadedmetadata", tryPlay);
+      v.removeEventListener("canplay", tryPlay);
+      document.removeEventListener("visibilitychange", onVisible);
+      io.disconnect();
+    };
+  }, [touch]);
   return (
     <div
       className="group relative aspect-[16/9] overflow-hidden border-b-2 border-[#1f1f1f]"
@@ -190,6 +220,24 @@ function CyclingWord({ items, intervalMs = 1000 }: { items: { word: string; colo
 }
 
 export function HomeContent() {
+  const [introA, setIntroA] = useState(false);
+  const [introB, setIntroB] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
+  useEffect(() => {
+    const t1 = setTimeout(() => setIntroA(true), 900);
+    const t2 = setTimeout(() => setIntroB(true), 1300);
+    const t3 = setTimeout(() => {
+      setIntroA(false);
+      setIntroB(false);
+    }, 3600);
+    const t4 = setTimeout(() => setIntroDone(true), 4000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
+  }, []);
   return (
     <>
       <section className="px-4 pb-4 pt-8 text-center md:px-8 md:pb-2 md:pt-12">
@@ -213,10 +261,16 @@ export function HomeContent() {
               />
             </span>
             <span
-              className="speech face-name pointer-events-none absolute left-1/2 top-0 z-10 select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:text-base"
-              style={{ background: "#ff9aac", transform: "translate(-50%, calc(-100% + 18px)) rotate(-4deg)", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+              className={`pointer-events-none absolute left-1/2 top-0 z-10 transition-opacity duration-300 ${introA ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+              style={{ transform: "translate(-50%, calc(-100% + 18px)) rotate(-4deg)" }}
             >
-              Lucas
+              <span
+                key={introA ? "intro" : "name"}
+                className={`speech inline-block select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white md:text-base ${introA ? "speech-pop" : ""}`}
+                style={{ background: "#ff9aac", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+              >
+                {introDone ? "Lucas" : "Hey"}
+              </span>
             </span>
           </div>
           <XMark />
@@ -235,10 +289,16 @@ export function HomeContent() {
               </span>
             </span>
             <span
-              className="speech face-name pointer-events-none absolute left-1/2 top-0 z-10 select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 md:text-base"
-              style={{ background: "#c9a9ff", transform: "translate(-50%, calc(-100% + 18px)) rotate(4deg)", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+              className={`pointer-events-none absolute left-1/2 top-0 z-10 transition-opacity duration-300 ${introB ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+              style={{ transform: "translate(-50%, calc(-100% + 18px)) rotate(4deg)" }}
             >
-              Andrew
+              <span
+                key={introB ? "intro" : "name"}
+                className={`speech inline-block select-none whitespace-nowrap px-3 py-1 text-sm font-bold text-white md:text-base ${introB ? "speech-pop" : ""}`}
+                style={{ background: "#c9a9ff", ["--tail-x" as string]: "50%" } as React.CSSProperties}
+              >
+                {introDone ? "Andrew" : "Welcome"}
+              </span>
             </span>
           </div>
         </div>
@@ -302,12 +362,12 @@ export function HomeContent() {
         ))}
       </div>
 
-      <section id="blog" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
+      <section id="posts" className="mx-auto max-w-6xl scroll-mt-20 px-8 pb-8 pt-8 md:pb-20">
         <h2
           className="fade-up mb-10 text-center text-5xl"
           style={{ ["--delay" as string]: "800ms" } as React.CSSProperties}
         >
-          Blog
+          Posts
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {blogPosts.map((post, i) => (

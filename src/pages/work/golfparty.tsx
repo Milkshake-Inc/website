@@ -3,12 +3,11 @@ import { WorkPage } from "@/components/WorkPage";
 export default function Page() {
   return (
     <WorkPage
-
       title="GolfParty.io"
+      playUrl="https://golfparty.io"
       image="/images/work/golfparty_nologo.webp"
       video="/images/work/golfparty.mp4"
       logo="/images/logos/golfparty.webp"
-      pastel="#ffd6e0"
       tag="Multiplayer · Web"
       description="A fast-paced multiplayer golf game hosted on Poki where players compete in real-time matches."
       content={`GolfParty.io is a fast-paced multiplayer golf game that brings friends together for competitive rounds. Hosted on Poki's platform, the game features intuitive controls and dynamic courses that make each match exciting and unpredictable.
