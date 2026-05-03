@@ -54,16 +54,6 @@ const games: Game[] = [
     desc: "Stack burgers. Time it right. Don't let it topple.",
     href: "/work/burgaagh",
   },
-  {
-    title: "Rankle",
-    image: "/images/work/rankle_nologo.webp",
-    video: "/images/work/rankle.mp4",
-    logo: "/images/logos/rankle.webp",
-    tag: "Daily · Web",
-    desc: "Rank the answers. Only your top 5 count.",
-    href: "/work/rankle",
-    fit: "contain",
-  },
 ];
 
 type BlogPost = {
