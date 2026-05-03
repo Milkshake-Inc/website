@@ -92,7 +92,7 @@ export default function Sprinkle() {
         </div>
         <div className="relative z-10">
           <nav className="mx-auto flex max-w-6xl items-center justify-between px-8 py-6">
-            <Image src="/icons/milkshakelogo.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
+            <Image src="/icons/milkshakelogo-v2.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
             <div className="flex gap-7">
               {["games", "blog", "about"].map(l => (
                 <a key={l} className="text-lg font-medium text-[#1f1f1f] hover:text-[#25d6ba]">{l}</a>
@@ -145,7 +145,7 @@ export default function Sprinkle() {
             </svg>
             <footer className="bg-white px-8 pb-12 pt-4">
               <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
-                <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+                <Image src="/icons/milkshakelogo-v2.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
                 <p className="text-base text-[#1f1f1f]">
                   made with <span className="text-[#ff5e9b]">♥</span> by two people, somewhere on the internet.
                 </p>

@@ -42,7 +42,7 @@ export function SiteNav() {
   return (
     <nav className="fade-down mx-auto flex max-w-6xl items-center justify-between px-4 py-6 md:px-8">
       <Link href="/" className="logo-hover">
-        <Image src="/icons/milkshakelogo.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
+        <Image src="/icons/milkshakelogo-v2.webp" alt="Milkshake" width={140} height={36} style={{ height: 32, width: "auto" }} />
       </Link>
       <div className="flex gap-4 md:gap-7">
         <Link href="/#games" className="text-base font-medium text-[#1f1f1f] hover:text-[#25d6ba] md:text-lg">
@@ -81,7 +81,7 @@ export function SiteFooter() {
       <footer className="bg-white px-8 pb-12 pt-8">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 text-center">
           <Link href="/">
-            <Image src="/icons/milkshakelogo.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
+            <Image src="/icons/milkshakelogo-v2.webp" alt="" width={120} height={32} style={{ height: 28, width: "auto" }} />
           </Link>
           <p className="text-base text-[#1f1f1f]">
             made with <span className="text-[#ff5e9b]">♥</span> by two people, somewhere on the internet.
