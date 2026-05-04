@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Creating Weapon Shaders",
+  title: "Stylized Weapon Shaders",
   type: "gfx" as const,
 };
 

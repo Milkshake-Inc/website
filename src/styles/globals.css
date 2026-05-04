@@ -156,6 +156,15 @@ h3 {
   transform: rotate(var(--rot, 0deg)) scale(1.04);
 }
 
+.tilt-tile:focus {
+  outline: none;
+}
+
+.tilt-tile:focus-visible {
+  outline: none;
+  box-shadow: 0 6px 0 #1f1f1f, 0 0 0 4px #25d6ba;
+}
+
 .page-transition {
   animation: page-fade 280ms cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -377,10 +386,6 @@ h3 {
   background-color: #25b29c;
 }
 
-.prose-light .bg-gray-100 {
-  background-color: #f0f0f0;
-}
-
 .prose-light p,
 .prose-light li {
   color: #323232;
@@ -402,4 +407,47 @@ h3 {
 .prose-light pre {
   background-color: #f0f0f0;
   border: 1px solid #e6e6e6;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.prose-light img,
+.prose-light video {
+  max-width: 640px !important;
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.prose-light .bg-gray-100 {
+  background-color: #f0f0f0;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-gallery-expand {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f1f1f;
+  border: 2px solid #1f1f1f;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 5;
+  transition: transform 150ms ease, background 150ms ease;
+  padding: 0;
+}
+.blog-gallery-expand:hover {
+  background: #25d6ba;
+  transform: scale(1.08);
 }

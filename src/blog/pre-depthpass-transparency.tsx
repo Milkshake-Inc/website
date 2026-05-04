@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Pre-DepthPass based transparency",
+  title: "DepthPass based transparency",
   type: "gfx" as const,
 };
 

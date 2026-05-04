@@ -11,9 +11,10 @@ type Game = {
   video?: string;
   logo: string;
   tag: string;
-  desc: string;
+  desc: React.ReactNode;
   href: string;
   fit?: "cover" | "contain";
+  badge?: { label: string; color: string };
 };
 
 const games: Game[] = [
@@ -23,7 +24,13 @@ const games: Game[] = [
     video: "/images/work/golfparty.mp4",
     logo: "/images/logos/golfparty.webp",
     tag: "Multiplayer · Web",
-    desc: "Quick, multiplayer golf in your browser. Hosted on Poki.",
+    desc: (
+      <>
+        Quick, multiplayer golf in your browser.
+        <br />
+        Over <strong className="font-bold">20M+</strong> game plays.
+      </>
+    ),
     href: "/work/golfparty",
   },
   {
@@ -32,9 +39,16 @@ const games: Game[] = [
     video: "/images/work/seedle.mp4",
     logo: "/images/logos/seedle.webp",
     tag: "Puzzle · Cozy",
-    desc: "A cosy puzzle about growing things. Place tiles, harvest your garden.",
+    desc: (
+      <>
+        A tiny daily farming puzzle.
+        <br />
+        Fresh garden every morning.
+      </>
+    ),
     href: "/work/seedle",
     fit: "contain",
+    badge: { label: "NEW", color: "#25d6ba" },
   },
   {
     title: "Crops And Robbers",
@@ -42,8 +56,15 @@ const games: Game[] = [
     video: "/images/work/cropsandrobbers.mp4",
     logo: "/images/logos/cropsandrobbers.webp",
     tag: "Strategy · Multiplayer",
-    desc: "Farmers grow. Robbers steal. Pick a side.",
+    desc: (
+      <>
+        Tend your farm by day. Trust no one by night.
+        <br />
+        Cosy chaos with friends.
+      </>
+    ),
     href: "/work/crops-and-robbers",
+    badge: { label: "WIP", color: "#ff9aac" },
   },
   {
     title: "Burgaagh!",
@@ -53,6 +74,7 @@ const games: Game[] = [
     tag: "Casual · Mobile",
     desc: "Stack burgers. Time it right. Don't let it topple.",
     href: "/work/burgaagh",
+    badge: { label: "WIP", color: "#ff9aac" },
   },
 ];
 
@@ -135,12 +157,14 @@ function GameCardMedia({
   fit,
   videoRef,
   touch,
+  badge,
 }: {
   image: string;
   video?: string;
   fit?: "cover" | "contain";
   videoRef: React.RefObject<HTMLVideoElement | null>;
   touch: boolean;
+  badge?: { label: string; color: string };
 }) {
   const fitClass = fit === "contain" ? "object-contain" : "object-cover";
   return (
@@ -162,6 +186,14 @@ function GameCardMedia({
             touch ? "opacity-100" : "opacity-0 group-hover:opacity-100"
           }`}
         />
+      )}
+      {badge && (
+        <span
+          className="absolute left-3 top-3 select-none border-2 border-[#1f1f1f] px-3 py-1 text-sm font-black uppercase tracking-widest text-white shadow-[0_3px_0_#1f1f1f]"
+          style={{ background: badge.color, transform: "rotate(-4deg)" }}
+        >
+          {badge.label}
+        </span>
       )}
     </div>
   );
@@ -196,7 +228,7 @@ function GameCard({ game, index, pastel }: { game: Game; index: number; pastel: 
         className="tilt-tile group block overflow-hidden rounded-3xl border-2 border-[#1f1f1f] shadow-[0_6px_0_#1f1f1f]"
         style={{ background: pastel, ["--rot" as string]: `${index % 2 ? 0.8 : -0.8}deg` } as React.CSSProperties}
       >
-        <GameCardMedia image={game.image} video={game.video} fit={game.fit} videoRef={videoRef} touch={touch} />
+        <GameCardMedia image={game.image} video={game.video} fit={game.fit} videoRef={videoRef} touch={touch} badge={game.badge} />
         <div className="flex items-center gap-5 p-5">
           <div className="flex h-20 w-1/3 flex-shrink-0 items-center justify-center">
             <Image
@@ -300,17 +332,24 @@ export function HomeContent() {
         </h1>
         <div className="mt-6 flex items-center justify-center gap-1 md:mt-10 md:gap-4">
           <div className="group relative flex flex-col items-center gap-0">
-            <span className="face-hover" style={{ ["--hover-rot" as string]: "-6deg" } as React.CSSProperties}>
-              <Image
-                src="/images/faces/lucas.webp"
-                alt="Lucas"
-                width={220}
-                height={220}
-                priority
-                className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
-                style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "120ms" } as React.CSSProperties}
-              />
-            </span>
+            <a
+              href="https://x.com/_LucasJones"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Lucas on X"
+            >
+              <span className="face-hover" style={{ ["--hover-rot" as string]: "-6deg" } as React.CSSProperties}>
+                <Image
+                  src="/images/faces/lucas.webp"
+                  alt="Lucas"
+                  width={220}
+                  height={220}
+                  priority
+                  className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
+                  style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "120ms" } as React.CSSProperties}
+                />
+              </span>
+            </a>
             <span
               className={`pointer-events-none absolute left-1/2 top-0 z-10 transition-opacity duration-300 ${introA ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
               style={{ transform: "translate(-50%, calc(-100% + 18px)) rotate(-4deg)" }}
@@ -326,19 +365,26 @@ export function HomeContent() {
           </div>
           <XMark />
           <div className="group relative flex flex-col items-center gap-0">
-            <span className="face-hover" style={{ ["--hover-rot" as string]: "6deg" } as React.CSSProperties}>
-              <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
-                <Image
-                  src="/images/faces/andrew.webp"
-                  alt="Andrew"
-                  width={220}
-                  height={220}
-                  priority
-                  className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
-                  style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "260ms" } as React.CSSProperties}
-                />
+            <a
+              href="https://x.com/Synestry"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Andrew on X"
+            >
+              <span className="face-hover" style={{ ["--hover-rot" as string]: "6deg" } as React.CSSProperties}>
+                <span className="inline-block" style={{ transform: "scaleX(-1)" }}>
+                  <Image
+                    src="/images/faces/andrew.webp"
+                    alt="Andrew"
+                    width={220}
+                    height={220}
+                    priority
+                    className="face-bounce h-32 w-32 object-contain sm:h-44 sm:w-44 md:h-64 md:w-64"
+                    style={{ ["--rot" as string]: "-6deg", ["--delay" as string]: "260ms" } as React.CSSProperties}
+                  />
+                </span>
               </span>
-            </span>
+            </a>
             <span
               className={`pointer-events-none absolute left-1/2 top-0 z-10 transition-opacity duration-300 ${introB ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
               style={{ transform: "translate(-50%, calc(-100% + 18px)) rotate(4deg)" }}
