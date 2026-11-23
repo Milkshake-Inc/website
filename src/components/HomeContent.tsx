@@ -67,6 +67,22 @@ const games: Game[] = [
     badge: { label: "NEW", color: "#25d6ba" },
   },
   {
+    title: "Pizza Clicker",
+    image: "/images/work/pizzaclicker_nologo.webp",
+    video: "/images/work/pizzaclicker.mp4",
+    logo: "/images/logos/pizzaclicker.webp",
+    tag: "Idle · Casual",
+    desc: (
+      <>
+        Tap the pizza. Hire a nanna.
+        <br />
+        Count pizzas in septillions.
+      </>
+    ),
+    href: "/work/pizza-clicker",
+    badge: { label: "NEW", color: "#25d6ba" },
+  },
+  {
     title: "Burgaagh!",
     image: "/images/work/burger_nologo.webp",
     video: "/images/work/burger.mp4",
