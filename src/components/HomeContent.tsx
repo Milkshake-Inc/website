@@ -83,6 +83,22 @@ const games: Game[] = [
     badge: { label: "NEW", color: "#25d6ba" },
   },
   {
+    title: "TurboTown",
+    image: "/images/work/turbotown_nologo.webp",
+    video: "/images/work/turbotown.mp4",
+    logo: "/images/logos/turbotown.webp",
+    tag: "Racing · Multiplayer",
+    desc: (
+      <>
+        Cruise a cheerful little town.
+        <br />
+        Street races, new cars, new mates.
+      </>
+    ),
+    href: "/work/turbotown",
+    badge: { label: "WIP", color: "#ff9aac" },
+  },
+  {
     title: "Burgaagh!",
     image: "/images/work/burger_nologo.webp",
     video: "/images/work/burger.mp4",
