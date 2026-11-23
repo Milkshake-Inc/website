@@ -64,7 +64,7 @@ const games: Game[] = [
       </>
     ),
     href: "/work/crops-and-robbers",
-    badge: { label: "WIP", color: "#ff9aac" },
+    badge: { label: "NEW", color: "#25d6ba" },
   },
   {
     title: "Burgaagh!",
